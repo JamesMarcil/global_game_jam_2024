@@ -1,4 +1,4 @@
-extends ImmediateGeometry
+class_name TiltVisualizer extends ImmediateGeometry
 
 export(float) var radius
 export(int) var num_subdivisions
