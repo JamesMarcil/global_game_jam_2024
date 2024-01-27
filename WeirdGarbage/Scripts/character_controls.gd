@@ -6,8 +6,11 @@ export(float) var tilt_acceleration:float
 export(float) var tilt_deceleration:float
 export(float) var max_velocity:float
 export(float) var friction:float
+export(float) var terminalVelocity:float
 
 export(NodePath) var cameraNode:NodePath
+
+signal catsGoBoom()
 
 static func vector3_max(a:Vector3, b:Vector3) -> Vector3:
 	var result:Vector3 = Vector3()
@@ -62,8 +65,8 @@ func _physics_process(delta:float) -> void:
 		
 	horizontal_velocity = horizontal_velocity.linear_interpolate(target_velocity, acceleration * delta)
 	
-	velocity.x = horizontal_velocity.x
-	velocity.z = horizontal_velocity.z
+	self.velocity.x = horizontal_velocity.x
+	self.velocity.z = horizontal_velocity.z
 	
 		
 #	if Input.is_action_pressed("lean_forward"):
@@ -104,4 +107,7 @@ func _physics_process(delta:float) -> void:
 #	else:
 #		self.velocity.x -= min(abs(self.velocity.x), friction) * sign(self.velocity.x)
 	
-	self.velocity = self.move_and_slide(self.velocity)
+	var collision:KinematicCollision = self.move_and_collide(self.velocity)
+	if collision:
+		if self.velocity.length() >= terminalVelocity:
+			emit_signal("catsGoBoom")

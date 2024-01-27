@@ -24,7 +24,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/follow_camera.gd"
 }, {
-"base": "Reference",
+"base": "Node",
+"class": "LoadScene",
+"language": "GDScript",
+"path": "res://Scripts/load_scene.gd"
+}, {
+"base": "Button",
 "class": "PlayButton",
 "language": "GDScript",
 "path": "res://Scripts/play_button.gd"
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "CharacterController": "",
 "EnableRagdoll": "",
 "FollowCamera": "",
+"LoadScene": "",
 "PlayButton": "",
 "TiltVisualizer": ""
 }
