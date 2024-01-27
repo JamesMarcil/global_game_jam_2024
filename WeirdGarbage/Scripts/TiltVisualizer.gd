@@ -37,9 +37,7 @@ func _process(delta:float) -> void:
 	
 	var point_on_sphere = self.transform.origin + Vector3(radius * cos(deg2rad(angle_to_fall_over)), radius * sin(deg2rad(angle_to_fall_over)), 0)
 	var center_at_point = Vector3(self.transform.origin.x, point_on_sphere.y, self.transform.origin.z)
-	print(point_on_sphere, center_at_point)
 	var radius_at_point = abs(point_on_sphere.distance_to(center_at_point))
-	print(radius_at_point)
 	self.begin(Mesh.PRIMITIVE_LINE_LOOP)
 	for value in range(0, num_subdivisions + 1):
 		var value_in_degrees:float = value * increment_in_degrees
