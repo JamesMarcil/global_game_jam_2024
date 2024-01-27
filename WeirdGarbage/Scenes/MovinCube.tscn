@@ -1,10 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/character_controls.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/TiltVisualizer.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 1, 1, 1 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -12,6 +14,7 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 transform = Transform( -1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 0.6, -1 )
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 script = ExtResource( 1 )
 tilt_acceleration = 0.05
 tilt_deceleration = 0.5
@@ -19,11 +22,8 @@ max_velocity = 5.0
 friction = 0.05
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 shape = SubResource( 1 )
 
-[node name="ImmediateGeometry" type="ImmediateGeometry" parent="KinematicBody"]
-script = ExtResource( 2 )
-radius = 1.0
-num_subdivisions = 32
-angle_to_fall_over = 45.0
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody"]
+mesh = SubResource( 2 )
+material/0 = null
