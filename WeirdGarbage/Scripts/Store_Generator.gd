@@ -80,6 +80,9 @@ func GenerateStore(StoreHolder):#Generates a store with double for loops yo
 
 
 func _ready():
+	if Chunk_Holder.get_child_count() > 0:
+		for child in Chunk_Holder.get_children():
+			child.queue_free()
 	Store_Size_X = RandomNum("int",Store_Size_Min,Store_Size_X_Max)
 	Store_Size_Z = RandomNum("int",Store_Size_Min,Store_Size_Z_Max)
 	GenerateStore(Chunk_Holder)#Create the store!

@@ -1,16 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Materials/Store/Windows_Fridge.tres" type="Material" id=1]
+[ext_resource path="res://Scenes/Store/StoreChunk_Wall_B.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Store/StoreChunk_Wall_L.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Store_Generator.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Store/StoreChunk_Corner_BR.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Store/StoreChunk_Wall_T.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Store/StoreChunk_Wall_R.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Store/StoreChunk_Corner_TL.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Store/StoreChunk_Corner_BL.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Store/StoreChunk_Center_0.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Store/StoreChunk_Corner_TR.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
 background_energy = 0.0
-ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_color = Color( 0.498039, 0.392157, 0.313726, 1 )
+ambient_light_energy = 0.5
 ssao_quality = 2
 ssao_blur = 1
-
-[sub_resource type="QuadMesh" id=2]
+glow_enabled = true
+glow_blend_mode = 1
 
 [node name="StoreScene" type="Spatial"]
 script = ExtResource( 3 )
@@ -20,11 +29,33 @@ environment = SubResource( 1 )
 
 [node name="LayoutHolder" type="Spatial" parent="."]
 
+[node name="StoreChunk_Center_0" parent="LayoutHolder" instance=ExtResource( 9 )]
+
+[node name="StoreChunk_Center_1" parent="LayoutHolder" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
+
+[node name="StoreChunk_Center_2" parent="LayoutHolder" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
+
+[node name="StoreChunk_Center_3" parent="LayoutHolder" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+
+[node name="StoreChunk_Center_4" parent="LayoutHolder" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+
+[node name="StoreChunk" parent="LayoutHolder" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="StoreChunk2" parent="LayoutHolder" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+
+[node name="StoreChunk3" parent="LayoutHolder" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+
+[node name="StoreChunk4" parent="LayoutHolder" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.232919, 0.972496, 0, -0.972496, 0.232919, 0, 5.9519, 1.5509 )
 current = true
 fov = 76.608
-
-[node name="WindowTest" type="MeshInstance" parent="."]
-mesh = SubResource( 2 )
-material/0 = ExtResource( 1 )

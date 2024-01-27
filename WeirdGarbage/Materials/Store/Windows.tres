@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://Textures/Store/Glass_Fridge_DA.tga" type="Texture" id=1]
+[ext_resource path="res://Shaders/Store/Windows.tres" type="Shader" id=2]
+[ext_resource path="res://Textures/Store/Glass_Fridge_Contents_DA.tga" type="Texture" id=3]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/GlowPower = Vector3( 1.5, 1.5, 1.5 )
+shader_param/Samples = 6
+shader_param/Spacing = 0.404
+shader_param/UV_Offset = Vector2( 0, 0.011 )
+shader_param/Glass_Alpha = 0.141
+shader_param/Grid_Frame = ExtResource( 3 )
+shader_param/Glass = ExtResource( 1 )

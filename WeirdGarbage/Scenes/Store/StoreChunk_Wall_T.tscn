@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Models/Store/Store_Build_Wall_T_0.dae" type="PackedScene" id=1]
-[ext_resource path="res://Materials/CatHuman/CatHuman_BoneTest.tres" type="Material" id=2]
+[ext_resource path="res://Materials/Store/Structure_W_T_0.tres" type="Material" id=2]
+[ext_resource path="res://Materials/Store/Windows_Fridge.tres" type="Material" id=3]
+[ext_resource path="res://Scenes/Store/Chunk_Light.tscn" type="PackedScene" id=4]
 
 [node name="StoreChunk" type="Spatial"]
 
@@ -9,5 +11,8 @@
 
 [node name="Store_Wall_T" parent="Store_Build_Wall_T_0" index="0"]
 material/0 = ExtResource( 2 )
+material/1 = ExtResource( 3 )
+
+[node name="LightBase" parent="." instance=ExtResource( 4 )]
 
 [editable path="Store_Build_Wall_T_0"]

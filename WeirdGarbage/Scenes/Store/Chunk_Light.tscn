@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="LightBase" type="Spatial"]
+
+[node name="Light" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75494, 0 )
+omni_range = 3.0

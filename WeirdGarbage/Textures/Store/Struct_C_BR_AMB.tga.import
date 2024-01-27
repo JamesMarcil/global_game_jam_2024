@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Struct_C_BR_AMB.tga-19a47eb96ab316554f15dddbebeb4984.s3tc.stex"
+path.etc2="res://.import/Struct_C_BR_AMB.tga-19a47eb96ab316554f15dddbebeb4984.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Textures/Store/Struct_C_BR_AMB.tga"
+dest_files=[ "res://.import/Struct_C_BR_AMB.tga-19a47eb96ab316554f15dddbebeb4984.s3tc.stex", "res://.import/Struct_C_BR_AMB.tga-19a47eb96ab316554f15dddbebeb4984.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
