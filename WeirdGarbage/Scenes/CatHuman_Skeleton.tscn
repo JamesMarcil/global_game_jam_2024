@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Models/CatHuman/CatHuman_Skeleton.dae" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/EnableRagdoll.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/EnableRagdoll.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.0719093
