@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Store/StoreChunk_Wall_B.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Store/StoreChunk_Wall_L.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Store/StoreChunk_Corner_BL.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Store/StoreChunk_Center_0.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Store/StoreChunk_Corner_TR.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/MovinCube.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -55,7 +56,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 [node name="StoreChunk4" parent="LayoutHolder" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.232919, 0.972496, 0, -0.972496, 0.232919, 0, 5.9519, 1.5509 )
-current = true
-fov = 76.608
+[node name="Spatial" parent="." instance=ExtResource( 11 )]

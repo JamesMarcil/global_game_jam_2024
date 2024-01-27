@@ -1,25 +1,33 @@
-[gd_resource type="VisualShader" load_steps=8 format=2]
+[gd_resource type="VisualShader" load_steps=10 format=2]
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=1]
+[sub_resource type="VisualShaderNodeVectorOp" id=1]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1.5, 1.5, 1 ) ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=2]
 uniform_name = "D"
 texture_type = 1
 
-[sub_resource type="VisualShaderNodeInput" id=2]
+[sub_resource type="VisualShaderNodeInput" id=3]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=3]
+[sub_resource type="VisualShaderNodeTextureUniform" id=4]
 uniform_name = "AMB"
 
-[sub_resource type="VisualShaderNodeInput" id=4]
+[sub_resource type="VisualShaderNodeInput" id=5]
 input_name = "uv2"
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=5]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=6]
 
-[sub_resource type="VisualShaderNodeColorUniform" id=6]
+[sub_resource type="VisualShaderNodeColorUniform" id=7]
 uniform_name = "ColorAMB"
 
-[sub_resource type="VisualShaderNodeScalarInterp" id=7]
+[sub_resource type="VisualShaderNodeScalarInterp" id=8]
 default_input_values = [ 0, 1.0, 1, 1.0, 2, 0.5 ]
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=9]
+uniform_name = "E"
+texture_type = 1
 
 [resource]
 code = "shader_type spatial;
@@ -28,6 +36,7 @@ render_mode specular_schlick_ggx;
 uniform vec4 ColorAMB : hint_color;
 uniform sampler2D D : hint_albedo;
 uniform sampler2D AMB;
+uniform sampler2D E : hint_albedo;
 
 
 
@@ -72,8 +81,22 @@ void fragment() {
 // VectorScalarMix:6
 	vec3 n_out6p0 = mix(n_out7p0, n_out2p0, n_out8p0);
 
+// TextureUniform:9
+	vec3 n_out9p0;
+	float n_out9p1;
+	{
+		vec4 n_tex_read = texture(E, UV.xy);
+		n_out9p0 = n_tex_read.rgb;
+		n_out9p1 = n_tex_read.a;
+	}
+
+// VectorOp:10
+	vec3 n_in10p1 = vec3(1.50000, 1.50000, 1.00000);
+	vec3 n_out10p0 = n_out9p0 * n_in10p1;
+
 // Output:0
 	ALBEDO = n_out6p0;
+	EMISSION = n_out10p0;
 
 }
 
@@ -82,20 +105,24 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -206, -300 )
+graph_offset = Vector2( -197, 454 )
 nodes/fragment/0/position = Vector2( 640, 160 )
-nodes/fragment/2/node = SubResource( 1 )
+nodes/fragment/2/node = SubResource( 2 )
 nodes/fragment/2/position = Vector2( -20, 160 )
-nodes/fragment/3/node = SubResource( 2 )
+nodes/fragment/3/node = SubResource( 3 )
 nodes/fragment/3/position = Vector2( -200, 280 )
-nodes/fragment/4/node = SubResource( 3 )
+nodes/fragment/4/node = SubResource( 4 )
 nodes/fragment/4/position = Vector2( -20, 360 )
-nodes/fragment/5/node = SubResource( 4 )
+nodes/fragment/5/node = SubResource( 5 )
 nodes/fragment/5/position = Vector2( -200, 360 )
-nodes/fragment/6/node = SubResource( 5 )
+nodes/fragment/6/node = SubResource( 6 )
 nodes/fragment/6/position = Vector2( 340, 260 )
-nodes/fragment/7/node = SubResource( 6 )
+nodes/fragment/7/node = SubResource( 7 )
 nodes/fragment/7/position = Vector2( -20, 40 )
-nodes/fragment/8/node = SubResource( 7 )
+nodes/fragment/8/node = SubResource( 8 )
 nodes/fragment/8/position = Vector2( 340, 380 )
-nodes/fragment/connections = PoolIntArray( 3, 0, 2, 0, 5, 0, 4, 0, 6, 0, 0, 0, 2, 0, 6, 1, 7, 0, 6, 0, 4, 0, 8, 1, 8, 0, 6, 2, 7, 1, 8, 2 )
+nodes/fragment/9/node = SubResource( 9 )
+nodes/fragment/9/position = Vector2( -20, 560 )
+nodes/fragment/10/node = SubResource( 1 )
+nodes/fragment/10/position = Vector2( 260, 560 )
+nodes/fragment/connections = PoolIntArray( 3, 0, 2, 0, 5, 0, 4, 0, 6, 0, 0, 0, 2, 0, 6, 1, 7, 0, 6, 0, 4, 0, 8, 1, 8, 0, 6, 2, 7, 1, 8, 2, 9, 0, 10, 0, 10, 0, 0, 5 )

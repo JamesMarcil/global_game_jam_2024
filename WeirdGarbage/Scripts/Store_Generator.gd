@@ -25,7 +25,7 @@ var Chunk_Directory = {
 
 onready var Chunk_Holder = get_node("LayoutHolder")
 
-const Store_Size_Min = 2#DO NOT CHANGE THIS should be 2 always
+const Store_Size_Min = 3#DO NOT CHANGE THIS should be 3 always
 var Store_Size_X_Max = 5#Max horizontal size of the Store
 var Store_Size_Z_Max = 5#Max depth size of the Store
 var Store_Size_X = 0
