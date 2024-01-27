@@ -7,7 +7,7 @@ export(float) var tilt_deceleration:float
 export(float) var max_velocity:float
 export(float) var friction:float
 
-var velocity:Vector3 = Vector3.ZERO
+export(NodePath) var cameraNode:NodePath
 
 static func vector3_max(a:Vector3, b:Vector3) -> Vector3:
 	var result:Vector3 = Vector3()
@@ -23,46 +23,85 @@ static func vector3_min(a:Vector3, b:Vector3) -> Vector3:
 	result.z = min(a.z, b.z)
 	return result
 	
+var camera:Camera
+var velocity:Vector3
+	
 func _ready():
+	self.camera = get_node(cameraNode)
 	self.velocity = Vector3.ZERO
 
 func _physics_process(delta:float) -> void:
+	var movement_direction:Vector3 = Vector3()
+	
 	if Input.is_action_pressed("lean_forward"):
-		if self.velocity.z < 0:
-			self.velocity.z += tilt_deceleration
-			if self.velocity.z >= 0:
-				self.velocity.z = tilt_deceleration 
-		elif self.velocity.z < max_velocity:
-			self.velocity.z += tilt_acceleration
-			self.velocity.z = min(self.velocity.z, max_velocity)			
+		movement_direction = Vector3.FORWARD
 	elif Input.is_action_pressed("lean_backward"):
-		if self.velocity.z > 0:
-			self.velocity.z -= tilt_deceleration
-			if self.velocity.z <= 0:
-				self.velocity.z = -tilt_deceleration
-		elif self.velocity.z > -max_velocity:
-			self.velocity.z -= tilt_acceleration
-			self.velocity.z = max(self.velocity.z, -max_velocity)
-	else:
-		self.velocity.z -= min(abs(self.velocity.z), friction) * sign(self.velocity.z)
+		movement_direction = Vector3.BACK
+		
+	if Input.is_action_pressed("lean_right"):
+		movement_direction = Vector3.RIGHT
+	elif Input.is_action_pressed("lean_left"):
+		movement_direction = Vector3.LEFT
 	
-	if Input.is_action_pressed("lean_left"):
-		if self.velocity.x < 0:
-			self.velocity.x += tilt_deceleration
-			if self.velocity.x >= 0:
-				self.velocity.x = tilt_deceleration 
-		elif self.velocity.x < max_velocity:
-			self.velocity.x += tilt_acceleration
-			self.velocity.x = min(self.velocity.x, max_velocity)			
-	elif Input.is_action_pressed("lean_right"):
-		if self.velocity.x > 0:
-			self.velocity.x -= tilt_deceleration
-			if self.velocity.x <= 0:
-				self.velocity.x = -tilt_deceleration
-		elif self.velocity.x > -max_velocity:
-			self.velocity.x -= tilt_acceleration
-			self.velocity.x = max(self.velocity.x, -max_velocity)
-	else:
-		self.velocity.x -= min(abs(self.velocity.x), friction) * sign(self.velocity.x)
+	var camera_basis:Basis = camera.global_transform.basis
+	var adjusted_basis:Basis = camera_basis.rotated(camera_basis.x, -camera_basis.get_euler().x)
+	movement_direction = adjusted_basis.xform(movement_direction)
 	
-	velocity = self.move_and_slide(velocity)
+	movement_direction = movement_direction.normalized()
+	
+	var target_velocity:Vector3 = movement_direction * max_velocity
+	
+	var horizontal_velocity:Vector3 = velocity
+	horizontal_velocity.y = 0
+	
+	var acceleration:float
+	if movement_direction.dot(horizontal_velocity) > 0:
+		acceleration = tilt_acceleration
+	else:
+		acceleration = tilt_deceleration
+		
+	horizontal_velocity = horizontal_velocity.linear_interpolate(target_velocity, acceleration * delta)
+	
+	velocity.x = horizontal_velocity.x
+	velocity.z = horizontal_velocity.z
+	
+		
+#	if Input.is_action_pressed("lean_forward"):
+#		if self.velocity.z < 0:
+#			self.velocity.z += tilt_deceleration
+#			if self.velocity.z >= 0:
+#				self.velocity.z = tilt_deceleration 
+#		elif self.velocity.z < max_velocity:
+#			self.velocity.z += tilt_acceleration
+#			self.velocity.z = min(self.velocity.z, max_velocity)			
+#	elif Input.is_action_pressed("lean_backward"):
+#		if self.velocity.z > 0:
+#			self.velocity.z -= tilt_deceleration
+#			if self.velocity.z <= 0:
+#				self.velocity.z = -tilt_deceleration
+#		elif self.velocity.z > -max_velocity:
+#			self.velocity.z -= tilt_acceleration
+#			self.velocity.z = max(self.velocity.z, -max_velocity)
+#	else:
+#		self.velocity.z -= min(abs(self.velocity.z), friction) * sign(self.velocity.z)
+#
+#	if Input.is_action_pressed("lean_right"):
+#		if self.velocity.x < 0:
+#			self.velocity.x += tilt_deceleration
+#			if self.velocity.x >= 0:
+#				self.velocity.x = tilt_deceleration 
+#		elif self.velocity.x < max_velocity:
+#			self.velocity.x += tilt_acceleration
+#			self.velocity.x = min(self.velocity.x, max_velocity)			
+#	elif Input.is_action_pressed("lean_left"):
+#		if self.velocity.x > 0:
+#			self.velocity.x -= tilt_deceleration
+#			if self.velocity.x <= 0:
+#				self.velocity.x = -tilt_deceleration
+#		elif self.velocity.x > -max_velocity:
+#			self.velocity.x -= tilt_acceleration
+#			self.velocity.x = max(self.velocity.x, -max_velocity)
+#	else:
+#		self.velocity.x -= min(abs(self.velocity.x), friction) * sign(self.velocity.x)
+	
+	self.velocity = self.move_and_slide(self.velocity)
