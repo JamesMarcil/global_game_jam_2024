@@ -19,12 +19,14 @@ tilt_acceleration = 0.05
 tilt_deceleration = 0.5
 max_velocity = 5.0
 friction = 0.05
+cameraNode = NodePath("Camera Target/Camera")
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 transform = Transform( 1.00528, 0, 0, 0, 1.00528, 0, 0, 0, 1.00528, 0, 0.65, 0 )
 shape = SubResource( 1 )
 
 [node name="CatHuman_Skeleton" parent="KinematicBody" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="Spatial" type="Spatial" parent="KinematicBody"]
 
