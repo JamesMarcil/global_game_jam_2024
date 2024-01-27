@@ -8,8 +8,14 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 
 [node name="Spatial" type="Spatial"]
 
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.934024, 0.357211, 0, -0.357211, 0.934024, -0.0128808, 0.592197, 1.55383 )
+
 [node name="KinematicBody" type="KinematicBody" parent="."]
 script = ExtResource( 1 )
+tilt_acceleration = 0.1
+max_velocity = Vector3( 2, 2, 2 )
+max_acceleration = Vector3( 0.5, 0.5, 0.5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 shape = SubResource( 1 )
@@ -19,6 +25,3 @@ script = ExtResource( 2 )
 radius = 1.0
 num_subdivisions = 32
 angle_to_fall_over = 45.0
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.96886, 0.0854823, -0.232384, 0, 0.938517, 0.345233, 0.247608, -0.334482, 0.909292, 0.063941, 0.522649, 1.3698 )
