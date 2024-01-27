@@ -1,0 +1,91 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform float vignette_size = 2.5;
+uniform float vignette_intinsity = 0.3;
+
+void fragment() {
+	vec3 col = texture(TEXTURE, UV).xyz;
+	float vignette = sqrt(pow(0.5 - UV.x, 2.0) + pow(0.5 - UV.y, 2.0));
+	vignette = vignette*vignette*vignette_size;
+	float blend = -vignette+1.0;
+	col = mix(col, vec3(0.0), vignette*0.2);
+	
+	float baseX = col.x;
+	if (baseX < 0.5) {
+		col.x = 2.0 * baseX * blend;
+	} else {
+		col.x = 1.0 - 2.0 * (1.0 - blend) * (1.0 - baseX);
+	}
+	
+	float baseY = col.y;
+	if (baseY < 0.5) {
+		col.y = 2.0 * baseY * blend;
+	} else {
+		col.y = 1.0 - 2.0 * (1.0 - blend) * (1.0 - baseY);
+	}
+	
+	float baseZ = col.z;
+	if (baseZ < 0.5) {
+		col.z = 2.0 * baseZ * blend;
+	} else {
+		col.z = 1.0 - 2.0 * (1.0 - blend) * (1.0 - baseZ);
+	}
+	
+	//COLOR.xyz = mix(texture(TEXTURE, UV).xyz,col,vignette_intinsity);
+	
+	vec3 ColNorm = texture(TEXTURE, UV).xyz;
+	vec3 ColFlip = texture(TEXTURE, -UV+1.0).xyz;
+	
+	float ColThresh = 0.70;
+	vec3 ColNew = vec3(0.0);
+	if (ColFlip.x > ColThresh) {
+		ColNew.x += ColFlip.x;
+	}
+	if (ColFlip.y > ColThresh) {
+		ColNew.y += ColFlip.y;
+	}
+	if (ColFlip.z > ColThresh) {
+		ColNew.z += ColFlip.z;
+	}
+	
+	float samples = 6.0;
+	float seperationX = 0.015;
+	float seperationY = 0.005;
+	float seperation2 = 1.2;
+	float Power = 4.0;
+	float GainR = 1.0;
+	float GainG = 2.0;
+	float GainB = 4.0;
+	
+	vec3 ScreenAvg_1 = texture(TEXTURE, vec2(UV.x+0.5,UV.y+0.5)).xyz;
+	vec3 blurInv = vec3(0.0);
+	for ( float x = -samples + 1.0; x < samples; x += 1.0 ){
+		for ( float y = -samples + 1.0; y < samples; y += 1.0 ){
+			blurInv += texture(TEXTURE, vec2(-UV.x+(x*seperationX)+1.0,-UV.y+(y*seperationY)+1.0)).xyz;
+			blurInv += texture(TEXTURE, vec2(-UV.x+(x*seperationX*seperation2)+1.0,-UV.y+(y*seperationY*seperation2)+1.0)).xyz;
+			blurInv += texture(TEXTURE, vec2(-UV.x+(x*seperationX*(seperation2*2.0))+1.0,-UV.y+(y*seperationY*(seperation2*2.0))+1.0)).xyz;
+		}
+	}
+	blurInv /= samples*(samples*10.0);
+	blurInv.x = pow(blurInv.x,Power)*GainR;
+	blurInv.y = pow(blurInv.y,Power)*GainG;
+	blurInv.z = pow(blurInv.z,Power)*GainB;
+	
+	
+	vec3 Chormatic = vec3(0.0);
+	Chormatic.x = texture(TEXTURE, UV).x;
+	Chormatic.y = texture(TEXTURE, UV*(0.95)+0.025).y;
+	Chormatic.z = texture(TEXTURE, UV*(0.9)+0.05).z;
+	COLOR.xyz = mix(texture(TEXTURE, UV).xyz,Chormatic,vignette);
+	
+	COLOR.xyz = ColNorm+(blurInv*0.4);//ColFlip;
+}
+"
+custom_defines = ""
+
+[resource]
+shader = SubResource( 1 )
+shader_param/vignette_size = 3.0
+shader_param/vignette_intinsity = 0.3

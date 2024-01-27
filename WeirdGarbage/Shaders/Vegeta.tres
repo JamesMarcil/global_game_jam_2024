@@ -1,0 +1,43 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform float vignette_size = 2.5;
+uniform float vignette_intinsity = 0.3;
+
+void fragment() {
+	vec3 col = texture(TEXTURE, UV).xyz;
+	float vignette = sqrt(pow(0.5 - UV.x, 2.0) + pow(0.5 - UV.y, 2.0));
+	vignette = vignette*vignette*vignette_size;
+	float blend = -vignette+0.75;
+	col = mix(col, vec3(0.0), vignette*0.2);
+	
+	float baseX = col.x;
+	if (baseX < 0.5) {
+		col.x = 2.0 * baseX * blend;
+	} else {
+		col.x = 1.0 - 2.0 * (1.0 - blend) * (1.0 - baseX);
+	}
+	
+	float baseY = col.y;
+	if (baseY < 0.5) {
+		col.y = 2.0 * baseY * blend;
+	} else {
+		col.y = 1.0 - 2.0 * (1.0 - blend) * (1.0 - baseY);
+	}
+	
+	float baseZ = col.z;
+	if (baseZ < 0.5) {
+		col.z = 2.0 * baseZ * blend;
+	} else {
+		col.z = 1.0 - 2.0 * (1.0 - blend) * (1.0 - baseZ);
+	}
+	
+	COLOR.xyz = mix(texture(TEXTURE, UV).xyz,col,vignette_intinsity);
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/vignette_size = 2.5
+shader_param/vignette_intinsity = 0.3

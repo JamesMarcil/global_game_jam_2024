@@ -1,0 +1,57 @@
+[gd_resource type="VisualShader" load_steps=4 format=2]
+
+[sub_resource type="VisualShaderNodeColorUniform" id=1]
+uniform_name = "Color"
+
+[sub_resource type="VisualShaderNodeScalarClamp" id=2]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=3]
+uniform_name = "Fade"
+
+[resource]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx, unshaded;
+
+uniform vec4 Color : hint_color;
+uniform float Fade;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:2
+	vec3 n_out2p0 = Color.rgb;
+	float n_out2p1 = Color.a;
+
+// ScalarUniform:5
+	float n_out5p0 = Fade;
+
+// ScalarClamp:4
+	float n_in4p1 = 0.00000;
+	float n_in4p2 = 1.00000;
+	float n_out4p0 = clamp(n_out5p0, n_in4p1, n_in4p2);
+
+// Output:0
+	ALBEDO = n_out2p0;
+	ALPHA = n_out4p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -504, 29 )
+flags/unshaded = true
+nodes/fragment/2/node = SubResource( 1 )
+nodes/fragment/2/position = Vector2( 100, 80 )
+nodes/fragment/4/node = SubResource( 2 )
+nodes/fragment/4/position = Vector2( 100, 220 )
+nodes/fragment/5/node = SubResource( 3 )
+nodes/fragment/5/position = Vector2( -140, 220 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0, 4, 0, 0, 1, 5, 0, 4, 0 )

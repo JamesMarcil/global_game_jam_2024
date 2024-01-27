@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+ambient_light_color = Color( 0.945098, 0.843137, 0.772549, 1 )
+fog_enabled = true
+fog_color = Color( 1, 0.45098, 0, 0.0431373 )
+fog_depth_curve = 1.41421
+glow_enabled = true
+glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.05
+adjustment_saturation = 1.1
+
+[node name="UNIVERSE" type="Spatial"]
+
+[node name="ENV" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="EyeSocket" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.553, 2.661, 29.726 )
+
+[node name="EYES" type="Camera" parent="EyeSocket"]
+transform = Transform( 1, 0, 0, 0, 0.998537, -0.0540788, 0, 0.0540788, 0.998537, 0, 0, 0 )
+fov = 19.5
+far = 200.0
