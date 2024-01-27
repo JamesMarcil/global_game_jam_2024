@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="WeirdGarbage"
-run/main_scene="res://Scenes/PostOffice_UNIVERSE.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/icon="res://icon.png"
 
 [input]

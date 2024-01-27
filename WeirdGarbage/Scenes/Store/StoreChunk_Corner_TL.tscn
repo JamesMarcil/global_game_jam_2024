@@ -6,22 +6,22 @@
 [ext_resource path="res://Materials/Store/Windows_Fridge.tres" type="Material" id=4]
 [ext_resource path="res://Scenes/Store/Chunk_Light.tscn" type="PackedScene" id=5]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.031, 0.064, 1.62959 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.031, 0.291, 1.031 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.41171, 1.44821, 0.214802 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.465942, 1.44821, 0.214802 )
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.594669, 1.44821, 0.214802 )
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.54535, 0.525111, 0.527692 )
 
 [node name="StoreChunk_Center_0" type="Spatial"]
@@ -36,10 +36,12 @@ material/2 = ExtResource( 3 )
 [node name="LightBase" parent="." instance=ExtResource( 5 )]
 
 [node name="StaticBody" type="StaticBody" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="Floor" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0387247, -0.583304 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Roof" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.633, 0 )
@@ -47,22 +49,22 @@ shape = SubResource( 2 )
 
 [node name="Wall" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -1.117, 1.422, -0.369025 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Wall2" type="CollisionShape" parent="StaticBody"]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.545292, 1.422, -1.117 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Wall3" type="CollisionShape" parent="StaticBody"]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.460388, 1.422, -1.86925 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Wall4" type="CollisionShape" parent="StaticBody"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0.219452, 1.422, -1.36239 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Roof2" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.478767, 2.39321, -1.41441 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [editable path="Store_Build_Corner_TL_0"]
