@@ -13,9 +13,27 @@ _global_script_classes=[ {
 "class": "CharacterController",
 "language": "GDScript",
 "path": "res://Scripts/character_controls.gd"
+}, {
+"base": "Reference",
+"class": "EnableRagdoll",
+"language": "GDScript",
+"path": "res://Scripts/EnableRagdoll.gd"
+}, {
+"base": "Camera",
+"class": "FollowCamera",
+"language": "GDScript",
+"path": "res://Scripts/follow_camera.gd"
+}, {
+"base": "ImmediateGeometry",
+"class": "TiltVisualizer",
+"language": "GDScript",
+"path": "res://Scripts/TiltVisualizer.gd"
 } ]
 _global_script_class_icons={
-"CharacterController": ""
+"CharacterController": "",
+"EnableRagdoll": "",
+"FollowCamera": "",
+"TiltVisualizer": ""
 }
 
 [application]
