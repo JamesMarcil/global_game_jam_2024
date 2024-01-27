@@ -1,13 +1,13 @@
-extends Node
+extends KinematicBody
 
 class_name CharacterController
 
 func _physics_process(delta:float) -> void:
 	if Input.is_action_pressed("lean_forward"):
-		print("Leaning forward bruh")
+		self.move_and_slide(Vector3(0,0,1))
 	elif Input.is_action_pressed("lean_backward"):
-		print("Don't fall over bro")
+		self.move_and_slide(Vector3(0,0,-1))
 	elif Input.is_action_pressed("lean_left"):
-		print("Slide to the left")
+		self.move_and_slide(Vector3(1,0,0))
 	elif Input.is_action_pressed("lean_right"):
-		print("Slide to the right")
+		self.move_and_slide(Vector3(-1,0,0))
