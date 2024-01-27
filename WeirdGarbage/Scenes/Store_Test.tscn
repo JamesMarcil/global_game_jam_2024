@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Materials/Store/Windows.tres" type="Material" id=1]
 [ext_resource path="res://Scripts/Store_Generator.gd" type="Script" id=3]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
 background_energy = 0.0
 ambient_light_color = Color( 1, 1, 1, 1 )
-ssao_enabled = true
 ssao_quality = 2
 ssao_blur = 1
+
+[sub_resource type="QuadMesh" id=2]
 
 [node name="StoreScene" type="Spatial"]
 script = ExtResource( 3 )
@@ -22,3 +24,7 @@ environment = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 0.232919, 0.972496, 0, -0.972496, 0.232919, 0, 5.9519, 1.5509 )
 current = true
 fov = 76.608
+
+[node name="WindowTest" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
