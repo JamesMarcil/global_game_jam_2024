@@ -12,7 +12,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.3
-text = "Weird Garbage"
+text = "Game Over!"
 align = 1
 valign = 1
 __meta__ = {
@@ -28,10 +28,10 @@ margin_left = -41.5
 margin_top = -10.0
 margin_right = 41.5
 margin_bottom = 10.0
-text = "Start Game"
+text = "Main Menu"
 expand_icon = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-sceneToLoad = "res://Scenes/Store_Test.tscn"
+sceneToLoad = "res://Scenes/main_menu.tscn"
