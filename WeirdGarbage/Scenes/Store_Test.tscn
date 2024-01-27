@@ -4,6 +4,11 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
+background_energy = 0.0
+ambient_light_color = Color( 1, 1, 1, 1 )
+ssao_enabled = true
+ssao_quality = 2
+ssao_blur = 1
 
 [node name="StoreScene" type="Spatial"]
 script = ExtResource( 3 )
