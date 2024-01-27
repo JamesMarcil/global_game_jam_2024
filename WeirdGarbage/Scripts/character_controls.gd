@@ -111,3 +111,5 @@ func _physics_process(delta:float) -> void:
 	if collision:
 		if self.velocity.length() >= terminalVelocity:
 			emit_signal("catsGoBoom")
+		else:
+			self.velocity = self.velocity.bounce(collision.normal)
