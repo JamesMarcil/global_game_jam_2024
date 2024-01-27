@@ -6,7 +6,7 @@ texture_type = 1
 
 [resource]
 code = "shader_type spatial;
-render_mode specular_schlick_ggx;
+render_mode specular_schlick_ggx, unshaded;
 
 uniform sampler2D D : hint_albedo;
 
@@ -37,7 +37,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -477, 78 )
+flags/unshaded = true
 nodes/fragment/2/node = SubResource( 1 )
 nodes/fragment/2/position = Vector2( 20, 140 )
 nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )

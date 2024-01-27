@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Models/Store/Store_Build_Corner_BL_0.dae" type="PackedScene" id=1]
+[ext_resource path="res://Materials/CatHuman/CatHuman_BoneTest.tres" type="Material" id=2]
+
+[node name="StoreChunk_Center_0" type="Spatial"]
+
+[node name="Store_Build_Corner_BL_0" parent="." instance=ExtResource( 1 )]
+
+[node name="Store_Corner_BL" parent="Store_Build_Corner_BL_0" index="0"]
+material/0 = ExtResource( 2 )
+
+[editable path="Store_Build_Corner_BL_0"]

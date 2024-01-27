@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Store_Generator.gd" type="Script" id=3]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+
+[node name="StoreScene" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="LayoutHolder" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.232919, 0.972496, 0, -0.972496, 0.232919, 0, 12.2173, 1.7156 )
+current = true
+fov = 49.2958
