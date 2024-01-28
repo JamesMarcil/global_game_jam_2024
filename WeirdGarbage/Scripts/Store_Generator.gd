@@ -49,7 +49,7 @@ func CreateChunk(ChunkParent,Xpos,Zpos,ChunkInstance,CameraMount):#Creates store
 	ChunkParent.add_child(NewChunk)
 	NewChunk.transform.origin = Vector3(Xpos,0,Zpos)*2.0
 	if CameraMount == 1:
-		SecurityCameraPos = NewChunk.get_child(3).global_transform.origin
+		SecurityCameraPos = NewChunk.get_node("CameraMount").global_transform.origin
 
 
 func GenerateStore(StoreHolder):#Generates a store with double for loops yo

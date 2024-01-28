@@ -5,8 +5,9 @@
 [ext_resource path="res://Scripts/follow_camera.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/load_scene.gd" type="Script" id=4]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.425, 0.65, 0.1 )
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.15
+height = 0.836279
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 1, 1, 1 )
@@ -16,7 +17,7 @@ size = Vector3( 1, 1, 1 )
 [node name="KinematicBody" type="KinematicBody" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 script = ExtResource( 1 )
 tilt_acceleration = 0.05
 tilt_deceleration = 0.5
@@ -27,7 +28,7 @@ turn_speed = 2.0
 cameraNode = NodePath("Camera Target/Camera")
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-transform = Transform( 1.00528, 0, 0, 0, 1.00528, 0, 0, 0, 1.00528, 0, 0.65, 0 )
+transform = Transform( 1.00528, 0, 0, 0, -4.39422e-08, 1.00528, 0, -1.00528, -4.39422e-08, 0, 0.65, 0 )
 shape = SubResource( 1 )
 
 [node name="CatHuman_Skeleton" parent="KinematicBody" instance=ExtResource( 2 )]
