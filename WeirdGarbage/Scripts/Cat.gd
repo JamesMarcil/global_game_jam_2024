@@ -76,5 +76,5 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("Test_Store_Generate"):
 		if Blasted == 0:
-			BlastOff()
+			#BlastOff()
 			Blasted = 1
