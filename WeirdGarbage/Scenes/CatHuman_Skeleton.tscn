@@ -448,29 +448,41 @@ shape = SubResource( 19 )
 transform = Transform( 0.999444, 0.00137388, -0.0332957, -0.0331196, 0.151456, -0.987909, 0.00368556, 0.988463, 0.151418, -0.048799, 0.795517, -0.0111788 )
 bone_name = "Spine2"
 
-[node name="Cat4" parent="Human_Bomes/Skeleton/Spine2" index="0" instance=ExtResource( 6 )]
+[node name="Cat4" parent="Human_Bomes/Skeleton/Spine2" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.57958, -0.777176, 0.245119, -0.647274, 0.621776, 0.440942, -0.495099, 0.0969016, -0.863415, -0.0763135, 0.000249438, 0.0382984 )
 
-[node name="Cat5" parent="Human_Bomes/Skeleton/Spine2" index="1" instance=ExtResource( 6 )]
+[node name="Cat5" parent="Human_Bomes/Skeleton/Spine2" index="1" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.242316, 0.970135, 0.0108764, 0.890182, 0.217859, 0.400141, 0.385822, 0.106642, -0.916389, 0.0554044, -0.0144411, 0.0630177 )
 
 [node name="Spine3" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="21"]
 transform = Transform( 0.998744, 0.00760172, -0.0495112, -0.0494029, 0.312802, -0.948533, 0.00827674, 0.949788, 0.312785, -0.0462282, 0.871795, -0.02287 )
 bone_name = "Spine3"
 
-[node name="Cat" parent="Human_Bomes/Skeleton/Spine3" index="0" instance=ExtResource( 6 )]
+[node name="Cat" parent="Human_Bomes/Skeleton/Spine3" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 
-[node name="Cat4" parent="Human_Bomes/Skeleton/Spine3" index="1" instance=ExtResource( 6 )]
+[node name="Cat4" parent="Human_Bomes/Skeleton/Spine3" index="1" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.788272, -0.615312, 0.00414561, -0.585651, -0.748171, 0.311854, -0.188786, -0.248254, -0.950121, -0.051, -0.031, -0.085 )
 
-[node name="Cat5" parent="Human_Bomes/Skeleton/Spine3" index="2" instance=ExtResource( 6 )]
+[node name="Cat5" parent="Human_Bomes/Skeleton/Spine3" index="2" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.963531, 0.202712, 0.174689, 0.134077, -0.930661, 0.340429, 0.231586, -0.304591, -0.9239, 0.075, -0.047, -0.092 )
 
 [node name="Head" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="22"]
 transform = Transform( -0.972023, 0.119222, -0.202377, 0.228129, 0.274043, -0.934268, -0.0559256, -0.954299, -0.293574, -0.0300279, 1.09387, -0.068136 )
 bone_name = "Head"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/Head" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/Head" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.973499, 0.115921, -0.197132, 0.226634, 0.373701, -0.899436, -0.030595, -0.920276, -0.39007, -0.007, 0.008, -0.046 )
 
 [node name="Hat" type="Spatial" parent="Human_Bomes/Skeleton/Head" index="1"]
@@ -508,71 +520,97 @@ material/0 = null
 transform = Transform( 0.0145176, -0.69148, 0.72225, -0.153878, 0.712176, 0.684928, -0.987983, -0.121082, -0.0960646, -0.147953, 0.998691, -0.068135 )
 bone_name = "Bicep.R"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/BicepR" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/BicepR" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.979658, -0.188412, -0.0690711, -0.17774, 0.974465, -0.137203, 0.0931581, -0.122135, -0.988132, -0.00699993, 0.00800002, -0.046 )
 
 [node name="BicepL" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="24"]
 transform = Transform( 0.0132952, 0.76029, -0.649447, 0.152503, 0.640365, 0.752779, 0.988214, -0.109051, -0.107432, 0.0682571, 0.987997, -0.0663432 )
 bone_name = "Bicep.L"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/BicepL" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/BicepL" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.981986, -0.188412, -0.0143296, 0.188744, 0.974465, 0.121622, -0.00895139, -0.122135, 0.992474, -0.00403776, -0.00732023, -0.0440798 )
 
 [node name="Hip" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="25"]
 transform = Transform( 1, 5.55112e-17, 7.88861e-31, -1.32134e-28, 1.19209e-07, -1, -5.55112e-17, 1, 1.42111e-14, -0.05, 0.684585, -0.0160843 )
 bone_name = "Hip"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/Hip" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/Hip" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.215942, -0.188412, 0.958056, -0.162426, 0.974465, 0.155029, -0.962802, -0.122135, -0.241031, 0.00720563, 0.0485154, -0.0560211 )
 
-[node name="Cat3" parent="Human_Bomes/Skeleton/Hip" index="1" instance=ExtResource( 6 )]
+[node name="Cat3" parent="Human_Bomes/Skeleton/Hip" index="1" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.680531, -0.0606003, -0.73021, -0.110943, -0.993605, -0.0209353, -0.724272, 0.0952585, -0.682903, -0.026364, -0.0580665, -0.0668725 )
 
 [node name="ThighL" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="26"]
 transform = Transform( 0.985747, -0.109355, -0.12723, 0.110506, -0.147407, 0.982883, -0.126531, -0.982626, -0.133145, 0.0141462, 0.667836, -0.00776459 )
 bone_name = "Thigh.L"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/ThighL" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/ThighL" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.0369687, 0.999193, -0.0156374, 0.998082, 0.0361407, -0.0502762, -0.0496705, -0.0174659, -0.998614, 0.00621585, -0.00244148, -0.0595343 )
 
-[node name="Cat3" parent="Human_Bomes/Skeleton/ThighL" index="1" instance=ExtResource( 6 )]
+[node name="Cat3" parent="Human_Bomes/Skeleton/ThighL" index="1" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.965322, 0.260421, 0.00879556, -0.254281, -0.934759, -0.248672, -0.0565208, -0.242366, 0.968531, 0.0154403, -0.0147418, -0.156734 )
 
 [node name="ThighR" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="27"]
 transform = Transform( 0.983686, 0.172877, 0.0481612, -0.0243269, -0.137429, 0.990213, 0.178082, -0.974902, -0.130932, -0.114146, 0.667836, -0.00776459 )
 bone_name = "Thigh.R"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/ThighR" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/ThighR" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.450807, -0.881569, -0.14074, 0.887099, -0.425409, -0.17859, 0.0975367, -0.20543, 0.973794, -0.0257609, -0.00478917, -0.0589153 )
 
-[node name="Cat3" parent="Human_Bomes/Skeleton/ThighR" index="1" instance=ExtResource( 6 )]
+[node name="Cat3" parent="Human_Bomes/Skeleton/ThighR" index="1" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.969531, 0.00522979, -0.244333, 0.0721269, -0.949261, -0.306592, -0.233469, -0.314978, 0.91993, -0.033852, -0.0204207, -0.163561 )
 
 [node name="CalfL" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="28"]
 transform = Transform( 0.977528, -0.135433, -0.161062, 0.172734, 0.0791993, 0.981779, -0.120502, -0.98722, 0.100836, 0.0516582, 0.378047, 0.0314914 )
 bone_name = "Calf.L"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/CalfL" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/CalfL" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.991685, -0.0991568, 0.0754323, 0.0702905, -0.945691, -0.319002, 0.102928, -0.311133, 0.944781, 0.001035, -0.0157723, -0.0642706 )
 
-[node name="Cat3" parent="Human_Bomes/Skeleton/CalfL" index="1" instance=ExtResource( 6 )]
+[node name="Cat3" parent="Human_Bomes/Skeleton/CalfL" index="1" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.765525, 0.579155, 0.280137, -0.591455, 0.804915, -0.0475051, -0.252956, -0.129326, 0.958858, 0.0201943, 0.00723913, -0.163523 )
 
 [node name="CalfR" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="29"]
 transform = Transform( 0.985368, 0.168225, -0.0243522, 0.00672422, 0.104584, 0.994493, 0.170126, -0.979779, 0.101884, -0.128346, 0.375886, 0.030839 )
 bone_name = "Calf.R"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/CalfR" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/CalfR" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.99415, -0.103205, 0.00309246, -0.103067, -0.992727, 0.0693675, -0.00408489, -0.0693474, -0.997618, 0.00370038, 0.00983147, -0.0624821 )
 
-[node name="Cat3" parent="Human_Bomes/Skeleton/CalfR" index="1" instance=ExtResource( 6 )]
+[node name="Cat3" parent="Human_Bomes/Skeleton/CalfR" index="1" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.37107, -0.928298, -0.0240209, 0.927261, 0.369139, 0.0614387, -0.0482456, -0.045083, 0.997893, -0.0141942, 0.00568486, -0.164829 )
 
 [node name="FootL" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="30"]
 transform = Transform( -0.99771, -0.00243843, -0.0664253, -0.0367213, 0.853222, 0.520253, 0.0557236, 0.521356, -0.851102, 0.102264, 0.0695725, -0.000191346 )
 bone_name = "Foot.L"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/FootL" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/FootL" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.993403, 4.2608e-08, -0.110172, -0.0521957, 0.880936, 0.471156, 0.0969544, 0.474256, -0.875179, 0.00028415, 0.00789822, -0.05816 )
 
 [node name="StaticBody" type="StaticBody" parent="Human_Bomes/Skeleton/FootL" index="1"]
@@ -586,7 +624,9 @@ shape = SubResource( 21 )
 transform = Transform( -0.995704, -0.0424818, 0.0813156, 0.00650244, 0.851419, 0.524446, -0.0918191, 0.522561, -0.847225, -0.120694, 0.0634166, -0.00117284 )
 bone_name = "Foot.R"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/FootR" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/FootR" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.999472, 9.68575e-08, 0.00544547, 0.00257998, 0.880936, 0.474035, -0.00479217, 0.474256, -0.880526, 0.0100114, 0.00560474, -0.05708 )
 
 [node name="StaticBody" type="StaticBody" parent="Human_Bomes/Skeleton/FootR" index="1"]
@@ -600,7 +640,9 @@ shape = SubResource( 21 )
 transform = Transform( -0.118013, 0.824833, -0.552923, 0.277145, 0.562047, 0.77929, 0.953553, -0.0612737, -0.294927, 0.292845, 0.726532, 0.00443875 )
 bone_name = "Hand.L"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/HandL" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/HandL" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.999472, 0.00224619, 0.00496119, 0.00257999, 0.998107, 0.0688469, -0.00479224, 0.0688897, -0.997647, 0.0102115, 0.00838226, -0.0973285 )
 
 [node name="StaticBody" type="StaticBody" parent="Human_Bomes/Skeleton/HandL" index="1"]
@@ -614,7 +656,9 @@ shape = SubResource( 21 )
 transform = Transform( -0.127441, -0.764479, 0.631927, -0.266237, 0.640106, 0.720682, -0.955446, -0.0763982, -0.285108, -0.398387, 0.760724, -0.0012898 )
 bone_name = "Hand.R"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/HandR" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/HandR" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.999472, 0.00224619, 0.00496119, 0.00257999, 0.998107, 0.0688469, -0.00479224, 0.0688897, -0.997647, 0.0102115, 0.00838226, -0.0973285 )
 
 [node name="StaticBody2" type="StaticBody" parent="Human_Bomes/Skeleton/HandR" index="1"]
@@ -627,21 +671,27 @@ shape = SubResource( 21 )
 transform = Transform( -0.0923182, 0.777151, -0.622506, 0.296716, 0.618245, 0.727828, 0.950493, -0.117516, -0.287668, 0.179495, 0.85906, -0.0479421 )
 bone_name = "Forarm.L"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/ArmL" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/ArmL" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.876282, -0.480628, 0.0237017, 0.480709, 0.87654, -0.0331881, -0.00481926, 0.0405148, 0.999201, 0.0108442, 0.00705951, -0.0781859 )
 
 [node name="ArmR" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="35"]
 transform = Transform( -0.105421, -0.710299, 0.695961, -0.286935, 0.691821, 0.66261, -0.952132, -0.129843, -0.276742, -0.271661, 0.881377, -0.051681 )
 bone_name = "Forarm.R"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/ArmR" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/ArmR" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.638207, -0.76977, -0.0173668, 0.767588, 0.635884, 0.0790362, -0.0497451, -0.0638335, 0.996753, 0.0119224, 0.00555003, -0.032738 )
 
 [node name="Neck" type="BoneAttachment" parent="Human_Bomes/Skeleton" index="36"]
 transform = Transform( -0.989719, 0.0359397, -0.138435, 0.139414, 0.0263333, -0.989884, -0.0319307, -0.999007, -0.031073, -0.0374959, 1.04047, -0.0698123 )
 bone_name = "Neck"
 
-[node name="Cat2" parent="Human_Bomes/Skeleton/Neck" index="0" instance=ExtResource( 6 )]
+[node name="Cat2" parent="Human_Bomes/Skeleton/Neck" index="0" groups=[
+"Cats",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.988105, 0.0490622, -0.145743, 0, 0.947741, 0.319043, 0.153779, 0.315248, -0.936467, 0.00778584, -0.00707579, 0.0468356 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
