@@ -119,7 +119,6 @@ func _physics_process(delta:float) -> void:
 	
 	#ANIMATION STUFF !!!!!!!!!!!!
 	var Velocity_Average = min((abs(velocity.x)+abs(velocity.y)+abs(velocity.z))/3.0,max_velocity)/max_velocity
-	print (Velocity_Average)
 	CatHuman_AnimTree["parameters/Root/WalkDirection/blend_position"].y = sqrt(Velocity_Average)*10.0
 	#CatHuman_AnimTree["parameters/Root/WalkDirection/blend_position"].x
 	CatHuman_AnimTree["parameters/Root/Speed/scale"] = lerp(0.5,10.0,sqrt(Velocity_Average))

@@ -30,6 +30,7 @@ var Store_Size_X_Max = 5#Max horizontal size of the Store
 var Store_Size_Z_Max = 5#Max depth size of the Store
 var Store_Size_X = 0
 var Store_Size_Z = 0
+var SecurityCameraPos = Vector3(0,0,0)
 
 
 func RandomNum(type,range1,range2):#Creates Random Numbers
@@ -43,13 +44,16 @@ func RandomNum(type,range1,range2):#Creates Random Numbers
 	return Output
 
 
-func CreateChunk(ChunkParent,Xpos,Zpos,ChunkInstance):#Creates store chunks and places them
+func CreateChunk(ChunkParent,Xpos,Zpos,ChunkInstance,CameraMount):#Creates store chunks and places them
 	var NewChunk = ChunkInstance.instance()
 	ChunkParent.add_child(NewChunk)
 	NewChunk.transform.origin = Vector3(Xpos,0,Zpos)*2.0
+	if CameraMount == 1:
+		SecurityCameraPos = NewChunk.get_child(3).global_transform.origin
 
 
 func GenerateStore(StoreHolder):#Generates a store with double for loops yo
+	var CamMount = 0
 	StoreHolder.transform.origin.x = -(Store_Size_X-1)
 	StoreHolder.transform.origin.z = -(Store_Size_Z-1)
 	for x in range(0,max(Store_Size_X,Store_Size_Min)):
@@ -67,6 +71,7 @@ func GenerateStore(StoreHolder):#Generates a store with double for loops yo
 					ChunkToCreate = Chunk_Directory["Corner_TR"][RandomNum("int",0,len(Chunk_Directory["Corner_TR"])-1)]
 				elif z == Store_Size_Z-1:
 					ChunkToCreate = Chunk_Directory["Corner_BR"][RandomNum("int",0,len(Chunk_Directory["Corner_BR"])-1)]
+					CamMount = 1
 				else:
 					ChunkToCreate = Chunk_Directory["Wall_R"][RandomNum("int",0,len(Chunk_Directory["Wall_R"])-1)]
 			else:
@@ -76,7 +81,9 @@ func GenerateStore(StoreHolder):#Generates a store with double for loops yo
 					ChunkToCreate = Chunk_Directory["Wall_B"][RandomNum("int",0,len(Chunk_Directory["Wall_B"])-1)]
 				else:
 					ChunkToCreate = Chunk_Directory["Center"][RandomNum("int",0,len(Chunk_Directory["Center"])-1)]
-			CreateChunk(StoreHolder,x,z,ChunkToCreate)
+			CreateChunk(StoreHolder,x,z,ChunkToCreate,CamMount)
+			CamMount = 0
+	self.get_node("SecurityCamera").global_transform.origin = SecurityCameraPos
 
 
 func _ready():

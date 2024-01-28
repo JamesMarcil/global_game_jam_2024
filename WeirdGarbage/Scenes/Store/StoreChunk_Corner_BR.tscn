@@ -65,4 +65,7 @@ shape = SubResource( 5 )
 transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 1.59815, 1.422, 0.788958 )
 shape = SubResource( 6 )
 
+[node name="CameraMount" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600996, 2.00184, 0.482086 )
+
 [editable path="Store_Build_Corner_BR_0"]
