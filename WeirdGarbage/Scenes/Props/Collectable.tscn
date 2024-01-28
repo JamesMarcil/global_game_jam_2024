@@ -33,7 +33,7 @@ radius = 0.55553
 [node name="Collectable" type="Spatial"]
 
 [node name="FoodHeight" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09739, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803641, 0 )
 
 [node name="FoodHover" type="Spatial" parent="FoodHeight"]
 script = ExtResource( 2 )
@@ -46,12 +46,12 @@ Slide_Direction = 1
 Slide_Speed = 1.5
 
 [node name="MeshInstance" type="MeshInstance" parent="FoodHeight/FoodHover"]
-transform = Transform( 1.60547, 0.344741, -1.02741e-08, -0.313865, 1.46168, -0.679233, -0.1426, 0.664096, 1.495, 0, 0, 0 )
+transform = Transform( 1.13963, 0.244711, -7.29297e-09, -0.222794, 1.03756, -0.482147, -0.101223, 0.471402, 1.06121, 0, 0, 0 )
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 3 )
 
 [node name="Sparkles" type="Particles" parent="FoodHeight/FoodHover"]
-transform = Transform( 1, 0, 0, 0, 0.540391, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 0.635852, 0, 0, 0, 0.343609, 0, 0, 0, 0.635852, 0, 0, 0 )
 material_override = ExtResource( 1 )
 amount = 5
 lifetime = 0.4
@@ -66,5 +66,5 @@ collision_mask = 0
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="TriggerArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11249, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.818741, 0 )
 shape = SubResource( 5 )

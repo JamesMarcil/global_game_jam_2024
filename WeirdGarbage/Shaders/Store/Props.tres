@@ -1,15 +1,15 @@
 [gd_resource type="VisualShader" load_steps=5 format=2]
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=4]
+[sub_resource type="VisualShaderNodeTextureUniform" id=1]
 uniform_name = "D"
 texture_type = 1
 
-[sub_resource type="VisualShaderNodeFresnel" id=5]
+[sub_resource type="VisualShaderNodeFresnel" id=2]
 default_input_values = [ 2, false, 3, 2.0 ]
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=6]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=3]
 
-[sub_resource type="VisualShaderNodeColorUniform" id=7]
+[sub_resource type="VisualShaderNodeColorUniform" id=4]
 uniform_name = "ColorEdge"
 
 [resource]
@@ -58,12 +58,12 @@ void light() {
 }
 "
 graph_offset = Vector2( -509, -119 )
-nodes/fragment/2/node = SubResource( 4 )
+nodes/fragment/2/node = SubResource( 1 )
 nodes/fragment/2/position = Vector2( -60, 160 )
-nodes/fragment/3/node = SubResource( 5 )
+nodes/fragment/3/node = SubResource( 2 )
 nodes/fragment/3/position = Vector2( 100, 420 )
-nodes/fragment/4/node = SubResource( 6 )
+nodes/fragment/4/node = SubResource( 3 )
 nodes/fragment/4/position = Vector2( 180, 160 )
-nodes/fragment/5/node = SubResource( 7 )
+nodes/fragment/5/node = SubResource( 4 )
 nodes/fragment/5/position = Vector2( 180, 300 )
 nodes/fragment/connections = PoolIntArray( 3, 0, 4, 2, 4, 0, 0, 0, 5, 0, 4, 1, 2, 0, 4, 0 )
