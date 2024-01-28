@@ -14,7 +14,6 @@ signal catGoesFlying()
 
 onready var CatHuman_AnimTree = self.get_node("CatHuman_Skeleton/AnimationTree")
 
-
 static func vector3_max(a:Vector3, b:Vector3) -> Vector3:
 	var result:Vector3 = Vector3()
 	result.x = max(a.x, b.x)
@@ -31,12 +30,34 @@ static func vector3_min(a:Vector3, b:Vector3) -> Vector3:
 	
 var velocity:Vector3
 var num_snacks_acquired:int
+var list_of_cats:Array
+var num_cats_at_start:int
+var rng:RandomNumberGenerator
 	
 func _ready():
 	self.velocity = Vector3.ZERO
 	self.num_snacks_acquired = 0
+	
+	self.rng = RandomNumberGenerator.new()
+	self.rng.randomize()
+	
+	self.list_of_cats = get_tree().get_nodes_in_group("Cats")
+	self.num_cats_at_start = self.list_of_cats.size()
+	
+	self.fisher_yates_shuffle(self.list_of_cats)
+	
 	self.move_lock_y = true # No floating cats!!
 	
+func fisher_yates_shuffle(arr:Array)->void:
+	for i in range(arr.size() -1, 0, -1):
+		var j:int = rng.randi_range(0, i)
+		var temp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
+
+func has_lost_too_many_cats() -> bool:
+	return false
+
 func acquire_snack() -> void:
 	self.num_snacks_acquired += 1
 	
@@ -117,6 +138,11 @@ func _physics_process(delta:float) -> void:
 			emit_signal("catsGoBoom")
 		else:
 			self.velocity = self.velocity.bounce(collision.normal)
+			
+			if self.list_of_cats.size() > 0:
+				var catToBlastOff = self.list_of_cats.pop_front()
+				var catScript = catToBlastOff.get_child(0) as Cat
+				catScript.BlastOff()
 			
 			emit_signal("catGoesFlying")
 	
