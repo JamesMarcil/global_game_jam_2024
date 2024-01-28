@@ -25,6 +25,9 @@ var Chunk_Directory = {
 
 onready var Chunk_Holder = get_node("LayoutHolder")
 
+var CatSnacks = preload("res://Scenes/Props/Collectable.tscn")
+const CatSnacks_SpawnChance = 0.5
+
 const Store_Size_Min = 4#DO NOT CHANGE THIS should be 3 always
 var Store_Size_X_Max = 6#Max horizontal size of the Store
 var Store_Size_Z_Max = 6#Max depth size of the Store
@@ -32,6 +35,7 @@ var Store_Size_X = 0
 var Store_Size_Z = 0
 var SecurityCameraPos = Vector3(0,0,0)
 var CatHumanPos = Vector3(0,0,0)
+
 
 func RandomNum(type,range1,range2):#Creates Random Numbers
 	var Output
@@ -46,9 +50,7 @@ func RandomNum(type,range1,range2):#Creates Random Numbers
 
 func CreateChunk(ChunkParent,Xpos,Zpos,ChunkInstance, ShouldSetCameraPosition:bool = false, ShouldSetPlayerPosition:bool = false):#Creates store chunks and places them
 	var NewChunk = ChunkInstance.instance()
-	
 	ChunkParent.add_child(NewChunk)
-	
 	NewChunk.transform.origin = Vector3(Xpos,0,Zpos)*2.0
 	
 	if ShouldSetCameraPosition:
@@ -56,6 +58,8 @@ func CreateChunk(ChunkParent,Xpos,Zpos,ChunkInstance, ShouldSetCameraPosition:bo
 	
 	if ShouldSetPlayerPosition:
 		CatHumanPos = NewChunk.get_node("PlayerSpawnPoint").global_transform.origin
+	
+	#if RandomNum("")
 
 
 func GenerateStore(StoreHolder):#Generates a store with double for loops yo

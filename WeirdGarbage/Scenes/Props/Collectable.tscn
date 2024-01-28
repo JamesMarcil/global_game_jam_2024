@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Materials/Collectables/Sparkles.tres" type="Material" id=1]
+[ext_resource path="res://Scripts/Pulse.gd" type="Script" id=2]
+[ext_resource path="res://Materials/CatHuman/Props.tres" type="Material" id=3]
+[ext_resource path="res://Models/Props/CatFood.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://Scripts/cat_snacks.gd" type="Script" id=5]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 5.14943, 0, 0, Vector2( 0.257862, 0.752273 ), 0.672304, 0.672304, 0, 0, Vector2( 0.72956, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -5.20966, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+width = 128
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.45
+emission_shape = 1
+emission_sphere_radius = 0.35
+gravity = Vector3( 0, 0, 0 )
+angle = 45.0
+scale = 2.5
+scale_random = 1.0
+scale_curve = SubResource( 2 )
+color = Color( 3, 2.75, 2, 1 )
+
+[sub_resource type="QuadMesh" id=4]
+size = Vector2( 0.5, 0.5 )
+
+[sub_resource type="SphereShape" id=5]
+radius = 0.55553
+
+[node name="Collectable" type="Spatial"]
+
+[node name="FoodHeight" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09739, 0 )
+
+[node name="FoodHover" type="Spatial" parent="FoodHeight"]
+script = ExtResource( 2 )
+Mode_Spin = 1
+Mode_Slide = 1
+Spin_Speed = 12.0
+Spin_Vector = 1
+Slide_Range = 0.2
+Slide_Direction = 1
+Slide_Speed = 1.5
+
+[node name="MeshInstance" type="MeshInstance" parent="FoodHeight/FoodHover"]
+transform = Transform( 1.60547, 0.344741, -1.02741e-08, -0.313865, 1.46168, -0.679233, -0.1426, 0.664096, 1.495, 0, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 3 )
+
+[node name="Sparkles" type="Particles" parent="FoodHeight/FoodHover"]
+transform = Transform( 1, 0, 0, 0, 0.540391, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 1 )
+amount = 5
+lifetime = 0.4
+explosiveness = 0.25
+fract_delta = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="TriggerArea" type="Area" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="TriggerArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11249, 0 )
+shape = SubResource( 5 )
