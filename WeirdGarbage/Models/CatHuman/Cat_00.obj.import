@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Cat_00.obj-e3f4e8d2bd4f14f5e88afa8829d8e855.mesh"
+
+[deps]
+
+files=[ "res://.import/Cat_00.obj-e3f4e8d2bd4f14f5e88afa8829d8e855.mesh" ]
+
+source_file="res://Models/CatHuman/Cat_00.obj"
+dest_files=[ "res://.import/Cat_00.obj-e3f4e8d2bd4f14f5e88afa8829d8e855.mesh", "res://.import/Cat_00.obj-e3f4e8d2bd4f14f5e88afa8829d8e855.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

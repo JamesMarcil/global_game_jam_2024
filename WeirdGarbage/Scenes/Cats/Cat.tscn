@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Models/CatHuman/Cat_00.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/CatHuman/CatHuman_BoneTest.tres" type="Material" id=2]
+[ext_resource path="res://Scripts/Cat.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.0743978
+height = 0.0943959
+
+[node name="Cat" type="Spatial"]
+transform = Transform( 1, 0, -6.51926e-09, -7.45058e-09, 0.999999, -2.98023e-08, -2.70084e-08, 0, 1, 0, 0.0673742, 0 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+collision_layer = 7
+collision_mask = 7
+mass = 0.1
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 0.969727, 0.102614, -0.221586, -0.10886, 0.993926, -0.0161239, 0.218586, 0.0397577, 0.975007, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Cat_00" type="MeshInstance" parent="RigidBody"]
+transform = Transform( 0.015, 4.94765e-10, -4.80213e-10, -4.94765e-10, 0.015, 4.65661e-10, 2.61934e-10, 0, 0.015, 2.23517e-08, -0.0439461, 0 )
+visible = false
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
