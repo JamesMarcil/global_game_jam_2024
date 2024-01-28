@@ -32,6 +32,7 @@ var velocity:Vector3
 	
 func _ready():
 	self.velocity = Vector3.ZERO
+	self.move_lock_y = true # No floating cats!!
 
 func _physics_process(delta:float) -> void:
 	var movement_direction:Vector3 = Vector3()
