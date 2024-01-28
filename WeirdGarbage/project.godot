@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "NeedSnacksOverlay",
 "language": "GDScript",
-"path": "res://Scenes/need_snacks_overlay.gd"
+"path": "res://Scripts/need_snacks_overlay.gd"
 }, {
 "base": "Button",
 "class": "PlayButton",
