@@ -69,7 +69,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 [node name="StoreChunk4" parent="LayoutHolder" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 
-[node name="Spatial" parent="." instance=ExtResource( 11 )]
+[node name="CatHuman" parent="." instance=ExtResource( 11 )]
 
 [node name="Lights" type="Spatial" parent="."]
 
