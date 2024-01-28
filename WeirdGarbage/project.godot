@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "TiltVisualizer",
 "language": "GDScript",
 "path": "res://Scripts/TiltVisualizer.gd"
+}, {
+"base": "Area",
+"class": "VictoryArea",
+"language": "GDScript",
+"path": "res://Scripts/victory_area.gd"
 } ]
 _global_script_class_icons={
 "CharacterController": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "FollowCamera": "",
 "LoadScene": "",
 "PlayButton": "",
-"TiltVisualizer": ""
+"TiltVisualizer": "",
+"VictoryArea": ""
 }
 
 [application]
@@ -86,6 +92,7 @@ Test_Store_Generate={
 
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Walls"
+3d_physics/layer_4="Collectibles"
 
 [physics]
 
