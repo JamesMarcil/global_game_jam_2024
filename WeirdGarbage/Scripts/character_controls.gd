@@ -35,8 +35,8 @@ var num_snacks_acquired:int
 var list_of_cats:Array
 var num_cats_at_start:int
 var rng:RandomNumberGenerator
-
-
+var num_snacks_at_start:int
+	
 func _ready():
 	self.velocity = Vector3.ZERO
 	self.num_snacks_acquired = 0
@@ -46,6 +46,8 @@ func _ready():
 	
 	self.list_of_cats = get_tree().get_nodes_in_group("Cats")
 	self.num_cats_at_start = self.list_of_cats.size()
+	
+	self.num_snacks_at_start = get_tree().get_nodes_in_group("Snacks").size()
 	
 	self.fisher_yates_shuffle(self.list_of_cats)
 	
@@ -68,8 +70,7 @@ func acquire_snack() -> void:
 	self.num_snacks_acquired += 1
 	
 func has_all_snacks() -> bool:
-	# TODO: Get all snacks in group
-	return true
+	return self.num_snacks_acquired >= self.num_snacks_at_start
 	
 func load_game_over_on_timeout() -> void:
 	get_tree().change_scene(gameOverScene)
