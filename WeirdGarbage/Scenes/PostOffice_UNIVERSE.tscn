@@ -9,6 +9,7 @@
 material = ExtResource( 2 )
 margin_right = 1024.0
 margin_bottom = 600.0
+rect_pivot_offset = Vector2( 160, 661 )
 mouse_filter = 2
 stretch = true
 __meta__ = {

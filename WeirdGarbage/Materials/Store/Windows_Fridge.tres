@@ -7,8 +7,8 @@
 [resource]
 shader = ExtResource( 2 )
 shader_param/GlowPower = Vector3( 1, 1, 1 )
-shader_param/Samples = 6
-shader_param/Spacing = 0.404
+shader_param/Samples = 4
+shader_param/Spacing = 0.62
 shader_param/UV_Offset = Vector2( 0, 0.011 )
 shader_param/Glass_Alpha = 0.141
 shader_param/Grid_Frame = ExtResource( 3 )

@@ -1,12 +1,26 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://Textures/FilmGrain_D.tga" type="Texture" id=1]
+[ext_resource path="res://Textures/FilmScan_D.tga" type="Texture" id=2]
+[ext_resource path="res://Textures/FilmDetails_D.tga" type="Texture" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
+
+uniform sampler2D FilmGrain : hint_albedo;
+uniform float FilmGrain_Amount : hint_range(0.0,1.0);
+uniform sampler2D FilmScan : hint_albedo;
+uniform float FilmScan_Amount : hint_range(0.0,1.0);
+uniform sampler2D FilmDetails : hint_albedo;
+
 uniform float vignette_size = 2.5;
 uniform float vignette_intinsity = 0.3;
 
 void fragment() {
-	vec3 col = texture(TEXTURE, UV).xyz;
+	vec2 FilmScan1 = texture(FilmScan,UV+(TIME*0.3)).rg;
+	vec2 UVs = mix(UV.xy,vec2(FilmScan1),FilmScan_Amount);
+	
+	vec3 col = texture(TEXTURE, UVs).xyz;
 	float vignette = sqrt(pow(0.5 - UV.x, 2.0) + pow(0.5 - UV.y, 2.0));
 	vignette = vignette*vignette*vignette_size;
 	float blend = -vignette+0.75;
@@ -33,11 +47,17 @@ void fragment() {
 		col.z = 1.0 - 2.0 * (1.0 - blend) * (1.0 - baseZ);
 	}
 	
-	COLOR.xyz = mix(texture(TEXTURE, UV).xyz,col,vignette_intinsity);
+	vec3 FilmBits1 = texture(FilmGrain,(UV*0.75)+(TIME*vec2(0.5,7.0))).rgb*vec3(1.5);
+	COLOR.xyz = mix(texture(TEXTURE, UVs).xyz,col,vignette_intinsity) * mix(vec3(1.0),FilmBits1,FilmGrain_Amount)+texture(FilmDetails,UV).rgb;
 }
 "
 
 [resource]
 shader = SubResource( 1 )
+shader_param/FilmGrain_Amount = 0.075
+shader_param/FilmScan_Amount = 0.01
 shader_param/vignette_size = 2.5
 shader_param/vignette_intinsity = 0.3
+shader_param/FilmGrain = ExtResource( 1 )
+shader_param/FilmScan = ExtResource( 2 )
+shader_param/FilmDetails = ExtResource( 3 )

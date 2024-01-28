@@ -74,6 +74,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 [node name="Lights" type="Spatial" parent="."]
 
 [node name="SecurityCamera" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06434, 0.625768 )
 
 [node name="Camera" type="Camera" parent="SecurityCamera"]
 current = true
