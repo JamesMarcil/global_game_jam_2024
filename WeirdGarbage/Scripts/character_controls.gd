@@ -53,6 +53,7 @@ func _ready():
 
 func DitchTheDuds():#Removes Cat clothes on gameover
 	get_node("CatHuman_Skeleton/Human_Bomes/Skeleton/Head/Hat/RigidBody").BlastOff()
+	get_node("CatHuman_Skeleton/Human_Bomes/Skeleton/Head/Sunglasses/RigidBody").BlastOff()
 
 func fisher_yates_shuffle(arr:Array)->void:
 	for i in range(arr.size() -1, 0, -1):

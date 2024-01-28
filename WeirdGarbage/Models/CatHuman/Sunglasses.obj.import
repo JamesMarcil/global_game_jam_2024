@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Sunglasses.obj-10cdc6c2481ebda3a4f857283c0661bf.mesh"
+
+[deps]
+
+files=[ "res://.import/Sunglasses.obj-10cdc6c2481ebda3a4f857283c0661bf.mesh" ]
+
+source_file="res://Models/CatHuman/Sunglasses.obj"
+dest_files=[ "res://.import/Sunglasses.obj-10cdc6c2481ebda3a4f857283c0661bf.mesh", "res://.import/Sunglasses.obj-10cdc6c2481ebda3a4f857283c0661bf.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
