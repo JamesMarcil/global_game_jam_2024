@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "CatSnacks",
+"language": "GDScript",
+"path": "res://Scripts/cat_snacks.gd"
+}, {
 "base": "KinematicBody",
 "class": "CharacterController",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/victory_area.gd"
 } ]
 _global_script_class_icons={
+"CatSnacks": "",
 "CharacterController": "",
 "EnableRagdoll": "",
 "FollowCamera": "",

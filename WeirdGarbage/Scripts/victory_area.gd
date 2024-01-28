@@ -7,5 +7,7 @@ func _ready():
 
 func on_body_entered(rhs:PhysicsBody) -> void:
 	if rhs is CharacterController:
-		# TODO: Check if the cat human has their food
-		get_tree().change_scene(victoryScene)
+		if (rhs as CharacterController).has_all_snacks():
+			get_tree().change_scene(victoryScene)
+		else:
+			pass # TODO: Trigger UI overlay
