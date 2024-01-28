@@ -10,6 +10,7 @@ export(float) var terminalVelocity:float
 export(float) var turn_speed:float
 
 signal catsGoBoom()
+signal catGoesFlying()
 
 onready var CatHuman_AnimTree = self.get_node("CatHuman_Skeleton/AnimationTree")
 
@@ -116,6 +117,8 @@ func _physics_process(delta:float) -> void:
 			emit_signal("catsGoBoom")
 		else:
 			self.velocity = self.velocity.bounce(collision.normal)
+			
+			emit_signal("catGoesFlying")
 	
 	if movement_direction.length() > 0:
 		self.transform = self.transform.interpolate_with(self.transform.looking_at(self.transform.origin + movement_direction.normalized(), Vector3.UP), turn_speed * delta)
