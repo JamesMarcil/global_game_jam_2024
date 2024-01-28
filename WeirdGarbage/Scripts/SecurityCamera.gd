@@ -2,7 +2,7 @@ extends Camera
 
 
 onready var CameraFake = get_node("../Camera_Fake")
-onready var CatHumon = get_node("../../Spatial/KinematicBody/CatHuman_Skeleton/Human_Bomes/Skeleton/Spine2")
+onready var CatHumon = get_node("../../CatHuman/KinematicBody/CatHuman_Skeleton/Human_Bomes/Skeleton/Spine2")
 
 export(bool) var Tracking = true
 
