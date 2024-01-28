@@ -35,7 +35,8 @@ var num_snacks_acquired:int
 var list_of_cats:Array
 var num_cats_at_start:int
 var rng:RandomNumberGenerator
-	
+
+
 func _ready():
 	self.velocity = Vector3.ZERO
 	self.num_snacks_acquired = 0
@@ -49,7 +50,10 @@ func _ready():
 	self.fisher_yates_shuffle(self.list_of_cats)
 	
 	self.move_lock_y = true # No floating cats!!
-	
+
+func DitchTheDuds():#Removes Cat clothes on gameover
+	get_node("CatHuman_Skeleton/Human_Bomes/Skeleton/Head/Hat/RigidBody").BlastOff()
+
 func fisher_yates_shuffle(arr:Array)->void:
 	for i in range(arr.size() -1, 0, -1):
 		var j:int = rng.randi_range(0, i)
@@ -158,6 +162,7 @@ func _physics_process(delta:float) -> void:
 					timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
 					timer.connect("timeout", self, "load_game_over_on_timeout")
 					self.add_child(timer)
+					DitchTheDuds()
 			
 			emit_signal("catGoesFlying")
 	
