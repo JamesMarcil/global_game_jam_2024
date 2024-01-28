@@ -34,7 +34,8 @@ func ChangeResolution():
 
 
 func _ready():
-	ChangeResolution()
+	pass
+	#ChangeResolution()
 
 
 func _physics_process(delta):

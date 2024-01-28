@@ -32,7 +32,6 @@ material/0 = ExtResource( 2 )
 
 [node name="Cat_00" type="MeshInstance" parent="RigidBody"]
 transform = Transform( 0.0186966, 6.16694e-10, -5.98556e-10, -6.16694e-10, 0.0186966, 5.80417e-10, 3.26485e-10, 2.31611e-23, 0.0186966, 2.23487e-08, -0.0439462, -0.000184037 )
-visible = false
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 
