@@ -69,6 +69,6 @@ shape = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600996, 2.00184, 0.482086 )
 
 [node name="PlayerSpawnPoint" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00083828, 0.0052247, 0.55444 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5 )
 
 [editable path="Store_Build_Corner_BR_0"]

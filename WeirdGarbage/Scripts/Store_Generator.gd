@@ -34,8 +34,7 @@ var Store_Size_Z_Max = 6#Max depth size of the Store
 var Store_Size_X = 0
 var Store_Size_Z = 0
 var SecurityCameraPos = Vector3(0,0,0)
-var CatHumanPos = Vector3(0,0,0)
-
+var CatHumanTransform:Transform
 
 func RandomNum(type,range1,range2):#Creates Random Numbers
 	var Output
@@ -57,7 +56,7 @@ func CreateChunk(ChunkParent,Xpos,Zpos,ChunkInstance, ShouldSetCameraPosition:bo
 		SecurityCameraPos = NewChunk.get_node("CameraMount").global_transform.origin
 	
 	if ShouldSetPlayerPosition:
-		CatHumanPos = NewChunk.get_node("PlayerSpawnPoint").global_transform.origin
+		CatHumanTransform = NewChunk.get_node("PlayerSpawnPoint").global_transform
 	
 	if RandomNum("float",0.0,1.0) < CatSnacks_SpawnChance:
 		var Snack = CatSnacks.instance()
@@ -104,7 +103,7 @@ func GenerateStore(StoreHolder):#Generates a store with double for loops yo
 			ShouldSetPlayerPosition = false
 	
 	self.get_node("SecurityCamera").global_transform.origin = SecurityCameraPos
-	self.get_node("CatHuman").global_transform.origin = CatHumanPos
+	self.get_node("CatHuman").global_transform = CatHumanTransform
 
 func _ready():
 	if Chunk_Holder.get_child_count() > 0:
