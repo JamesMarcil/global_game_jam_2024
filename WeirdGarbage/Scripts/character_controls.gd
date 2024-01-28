@@ -9,8 +9,6 @@ export(float) var friction:float
 export(float) var terminalVelocity:float
 export(float) var turn_speed:float
 
-export(NodePath) var cameraNode:NodePath
-
 signal catsGoBoom()
 
 onready var CatHuman_AnimTree = self.get_node("CatHuman_Skeleton/AnimationTree")
@@ -30,11 +28,9 @@ static func vector3_min(a:Vector3, b:Vector3) -> Vector3:
 	result.z = min(a.z, b.z)
 	return result
 	
-var camera:Camera
 var velocity:Vector3
 	
 func _ready():
-	self.camera = get_node(cameraNode)
 	self.velocity = Vector3.ZERO
 
 func _physics_process(delta:float) -> void:
@@ -49,11 +45,6 @@ func _physics_process(delta:float) -> void:
 		movement_direction = Vector3.RIGHT
 	elif Input.is_action_pressed("lean_left"):
 		movement_direction = Vector3.LEFT
-	
-#	var camera_basis:Basis = camera.global_transform.basis
-#	var adjusted_basis:Basis = camera_basis.rotated(camera_basis.x, -camera_basis.get_euler().x)
-#	movement_direction = adjusted_basis.xform(movement_direction)
-#	movement_direction = movement_direction.normalized()
 	
 	var target_velocity:Vector3 = movement_direction * max_velocity
 	
