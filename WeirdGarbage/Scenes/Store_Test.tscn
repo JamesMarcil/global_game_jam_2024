@@ -83,3 +83,5 @@ script = ExtResource( 12 )
 [node name="Camera_Fake" type="Spatial" parent="SecurityCamera"]
 
 [node name="CatHolder" type="Spatial" parent="."]
+
+[editable path="CatHuman"]
