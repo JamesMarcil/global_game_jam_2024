@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Prop_Juice_1.obj-b6c0db6fa46a3fabed1b5ec35b02c329.mesh"
+
+[deps]
+
+files=[ "res://.import/Prop_Juice_1.obj-b6c0db6fa46a3fabed1b5ec35b02c329.mesh" ]
+
+source_file="res://Models/Props/Prop_Juice_1.obj"
+dest_files=[ "res://.import/Prop_Juice_1.obj-b6c0db6fa46a3fabed1b5ec35b02c329.mesh", "res://.import/Prop_Juice_1.obj-b6c0db6fa46a3fabed1b5ec35b02c329.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

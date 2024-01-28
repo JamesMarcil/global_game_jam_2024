@@ -1,13 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Models/Store/Shelf_2.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/Store/Structure_CN_0.tres" type="Material" id=2]
+[ext_resource path="res://Scenes/Props/Juice_2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Props/Juice_3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Props/Juice_1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Props/Juice_0.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Props/Cereal_1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Props/Cereal_0.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Props/Cereal_2.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.381955, 0.170545, 0.629857 )
+extents = Vector3( 0.410989, 0.170545, 0.629857 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.275509, 0.191242, 0.487929 )
+extents = Vector3( 0.215726, 0.0231111, 0.386265 )
 
 [node name="Shelf_00" type="Spatial"]
 
@@ -25,7 +32,115 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165741, 0 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.467337, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448167, 0 )
 shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628202, 0 )
+shape = SubResource( 2 )
+
+[node name="Props" type="Spatial" parent="."]
+
+[node name="Prop" parent="Props" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347086, 0.44759, 0 )
+
+[node name="Prop7" parent="Props" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331243, 0.44759, 0.346903 )
+
+[node name="Prop8" parent="Props" instance=ExtResource( 6 )]
+transform = Transform( 0.31891, 0, 0.947785, 0, 1, 0, -0.947785, 0, 0.31891, 0.281549, 0.44759, 0.479362 )
+
+[node name="Prop19" parent="Props" instance=ExtResource( 6 )]
+transform = Transform( -0.996408, 0, -0.0846866, 0, 1, 0, 0.0846866, 0, -0.996408, -0.341259, 0.44759, 0.282289 )
+
+[node name="Prop20" parent="Props" instance=ExtResource( 6 )]
+transform = Transform( -0.698653, 0, 0.715461, 0, 1, 0, -0.715461, 0, -0.698653, -0.214699, 0.44759, -0.566903 )
+
+[node name="Prop21" parent="Props" instance=ExtResource( 6 )]
+transform = Transform( -0.0809297, 0, 0.99672, 0, 1, 0, -0.99672, 0, -0.0809297, -0.0814695, 0.44759, -0.592613 )
+
+[node name="Prop22" parent="Props" instance=ExtResource( 6 )]
+transform = Transform( 0.469718, 0, 0.882816, 0, 1, 0, -0.882816, 0, 0.469718, 0.062364, 0.44759, -0.592613 )
+
+[node name="Prop2" parent="Props" instance=ExtResource( 5 )]
+transform = Transform( 0.998623, 0, 0.0524751, 0, 1, 0, -0.0524751, 0, 0.998623, 0.33771, 0.44759, -0.303996 )
+
+[node name="Prop12" parent="Props" instance=ExtResource( 5 )]
+transform = Transform( 0.998623, 0, 0.0524751, 0, 1, 0, -0.0524751, 0, 0.998623, -0.253271, 0.44759, 0.547226 )
+
+[node name="Prop13" parent="Props" instance=ExtResource( 5 )]
+transform = Transform( 0.450177, 0, 0.89294, 0, 1, 0, -0.89294, 0, 0.450177, -0.337752, 0.44759, 0.43911 )
+
+[node name="Prop14" parent="Props" instance=ExtResource( 5 )]
+transform = Transform( 0.450177, 0, 0.89294, 0, 1, 0, -0.89294, 0, 0.450177, -0.337752, 0.44759, -0.00908816 )
+
+[node name="Prop3" parent="Props" instance=ExtResource( 3 )]
+transform = Transform( 0.451828, 0, 0.892105, 0, 1, 0, -0.892105, 0, 0.451828, 0.347086, 0.44759, -0.172953 )
+
+[node name="Prop5" parent="Props" instance=ExtResource( 3 )]
+transform = Transform( 0.451828, 0, 0.892105, 0, 1, 0, -0.892105, 0, 0.451828, 0.321537, 0.44759, -0.445072 )
+
+[node name="Prop11" parent="Props" instance=ExtResource( 3 )]
+transform = Transform( 0.451828, 0, 0.892105, 0, 1, 0, -0.892105, 0, 0.451828, 0.0172421, 0.44759, 0.598619 )
+
+[node name="Prop15" parent="Props" instance=ExtResource( 3 )]
+transform = Transform( 0.987677, 0, -0.156504, 0, 1, 0, 0.156504, 0, 0.987677, -0.345895, 0.44759, 0.126307 )
+
+[node name="Prop16" parent="Props" instance=ExtResource( 3 )]
+transform = Transform( 0.987677, 0, -0.156504, 0, 1, 0, 0.156504, 0, 0.987677, -0.307687, 0.44759, -0.433379 )
+
+[node name="Prop4" parent="Props" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.358022, 0.453974, 0.192431 )
+
+[node name="Prop9" parent="Props" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154614, 0.453974, 0.577669 )
+
+[node name="Prop10" parent="Props" instance=ExtResource( 4 )]
+transform = Transform( 0.0923185, 0, -0.99573, 0, 1, 0, 0.99573, 0, 0.0923185, -0.112086, 0.453974, 0.578341 )
+
+[node name="Prop17" parent="Props" instance=ExtResource( 4 )]
+transform = Transform( -0.930341, 0, -0.366696, 0, 1, 0, 0.366696, 0, -0.930341, -0.351712, 0.453974, -0.14482 )
+
+[node name="Prop18" parent="Props" instance=ExtResource( 4 )]
+transform = Transform( -0.790967, 0, 0.611858, 0, 1, 0, -0.611858, 0, -0.790967, -0.333224, 0.453974, -0.313471 )
+
+[node name="Prop6" parent="Props" instance=ExtResource( 4 )]
+transform = Transform( 0.27223, 0, 0.962232, 0, 1, 0, -0.962232, 0, 0.27223, 0.216836, 0.453974, -0.565227 )
+
+[node name="Prop23" parent="Props" instance=ExtResource( 8 )]
+transform = Transform( 0.382151, 0, 0.9241, 0, 1, 0, -0.9241, 0, 0.382151, -0.173756, 0.77129, -0.207996 )
+
+[node name="Prop24" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( -0.529579, 0, 0.848261, 0, 1, 0, -0.848261, 0, -0.529579, -0.150295, 0.770049, -0.392275 )
+
+[node name="Prop25" parent="Props" instance=ExtResource( 9 )]
+transform = Transform( 0.998045, 0, 0.0624944, 0, 1, 0, -0.0624944, 0, 0.998045, -0.230633, 0.778095, -0.0401036 )
+
+[node name="Prop26" parent="Props" instance=ExtResource( 8 )]
+transform = Transform( 0.230916, 0, -0.972974, 0, 1, 0, 0.972974, 0, 0.230916, -0.165632, 0.770049, 0.265415 )
+
+[node name="Prop27" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( 0.394166, 0, -0.919039, 0, 1, 0, 0.919039, 0, 0.394166, -0.165632, 0.770049, 0.116464 )
+
+[node name="Prop28" parent="Props" instance=ExtResource( 9 )]
+transform = Transform( 0.152089, 0, 0.988367, 0, 1, 0, -0.988367, 0, 0.152089, -0.165632, 0.770049, 0.386669 )
+
+[node name="Prop29" parent="Props" instance=ExtResource( 8 )]
+transform = Transform( 0.394166, 0, -0.919039, 0, 1, 0, 0.919039, 0, 0.394166, 0.183954, 0.769065, -0.112893 )
+
+[node name="Prop30" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( -0.0514994, 0, 0.998673, 0, 1, 0, -0.998673, 0, -0.0514994, 0.159828, 0.768866, -0.245318 )
+
+[node name="Prop31" parent="Props" instance=ExtResource( 9 )]
+transform = Transform( 0.153262, 0, -0.988186, 0, 1, 0, 0.988186, 0, 0.153262, 0.151809, 0.769065, -0.376369 )
+
+[node name="Prop32" parent="Props" instance=ExtResource( 8 )]
+transform = Transform( 0.394166, 0, -0.919039, 0, 1, 0, 0.919039, 0, 0.394166, 0.11486, 0.769065, 0.374021 )
+
+[node name="Prop33" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( 0.998145, 0, -0.0608743, 0, 1, 0, 0.0608743, 0, 0.998145, 0.243384, 0.769065, 0.0266511 )
+
+[node name="Prop34" parent="Props" instance=ExtResource( 9 )]
+transform = Transform( -0.0650374, 0, 0.997883, 0, 1, 0, -0.997883, 0, -0.0650374, 0.16543, 0.770081, 0.188562 )
 
 [editable path="Shelf_2"]

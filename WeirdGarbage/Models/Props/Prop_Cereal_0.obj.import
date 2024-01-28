@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Prop_Cereal_0.obj-2358958f5fe5ef39a6a34f443deaf4cd.mesh"
+
+[deps]
+
+files=[ "res://.import/Prop_Cereal_0.obj-2358958f5fe5ef39a6a34f443deaf4cd.mesh" ]
+
+source_file="res://Models/Props/Prop_Cereal_0.obj"
+dest_files=[ "res://.import/Prop_Cereal_0.obj-2358958f5fe5ef39a6a34f443deaf4cd.mesh", "res://.import/Prop_Cereal_0.obj-2358958f5fe5ef39a6a34f443deaf4cd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
