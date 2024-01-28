@@ -20,6 +20,8 @@ extents = Vector3( 0.11495, 0.165368, 0.637898 )
 material/0 = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.148, 0 )
