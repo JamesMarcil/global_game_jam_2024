@@ -11,7 +11,7 @@ var Fov_Target = 30
 var Distance_ToCatHumon = 0.0
 var Distance_Max = 10.0
 const Tracking_Speed = 0.1
-var Fov_Far = 5
+var Fov_Far = 10
 var Fov_Close = 70
 
 
@@ -22,5 +22,5 @@ func _physics_process(delta):
 		self.set_transform(Transform(thisRotation,self.transform.origin))
 		
 		Distance_ToCatHumon = max(min(self.global_transform.origin.distance_to(CatHumon.global_transform.origin),Distance_Max),0.0)/Distance_Max
-		Fov_Target = lerp(Fov_Close,Fov_Far,Distance_ToCatHumon)
+		Fov_Target = lerp(Fov_Close,Fov_Far,sqrt(Distance_ToCatHumon))
 		self.fov = lerp(self.fov,Fov_Target,Fov_Blend*(delta*60.0))
