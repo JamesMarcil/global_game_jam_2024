@@ -36,6 +36,9 @@ var list_of_cats:Array
 var num_cats_at_start:int
 var rng:RandomNumberGenerator
 var num_snacks_at_start:int
+var SnacksHeldL = 0
+var SnacksHeldR = 0
+var SnacksHeld = []
 	
 func _ready():
 	self.velocity = Vector3.ZERO
@@ -165,6 +168,8 @@ func _physics_process(delta:float) -> void:
 					timer.connect("timeout", self, "load_game_over_on_timeout")
 					self.add_child(timer)
 					DitchTheDuds()
+					for HeldFood in SnacksHeld:
+						HeldFood.queue_free()
 			
 			emit_signal("catGoesFlying")
 	
