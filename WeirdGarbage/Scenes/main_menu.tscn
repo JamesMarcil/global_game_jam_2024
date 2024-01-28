@@ -34,4 +34,4 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-sceneToLoad = "res://Scenes/Store_Test.tscn"
+sceneToLoad = "res://Scenes/PostOffice_UNIVERSE.tscn"

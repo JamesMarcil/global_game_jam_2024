@@ -12,6 +12,9 @@ export(NodePath) var cameraNode:NodePath
 
 signal catsGoBoom()
 
+onready var CatHuman_AnimTree = self.get_node("CatHuman_Skeleton/AnimationTree")
+
+
 static func vector3_max(a:Vector3, b:Vector3) -> Vector3:
 	var result:Vector3 = Vector3()
 	result.x = max(a.x, b.x)
@@ -68,7 +71,6 @@ func _physics_process(delta:float) -> void:
 	self.velocity.x = horizontal_velocity.x
 	self.velocity.z = horizontal_velocity.z
 	
-		
 #	if Input.is_action_pressed("lean_forward"):
 #		if self.velocity.z < 0:
 #			self.velocity.z += tilt_deceleration
@@ -113,3 +115,11 @@ func _physics_process(delta:float) -> void:
 			emit_signal("catsGoBoom")
 		else:
 			self.velocity = self.velocity.bounce(collision.normal)
+	
+	
+	#ANIMATION STUFF !!!!!!!!!!!!
+	var Velocity_Average = min((abs(velocity.x)+abs(velocity.y)+abs(velocity.z))/3.0,max_velocity)/max_velocity
+	print (Velocity_Average)
+	CatHuman_AnimTree["parameters/Root/WalkDirection/blend_position"].y = sqrt(Velocity_Average)*10.0
+	#CatHuman_AnimTree["parameters/Root/WalkDirection/blend_position"].x
+	CatHuman_AnimTree["parameters/Root/Speed/scale"] = lerp(0.5,10.0,sqrt(Velocity_Average))
