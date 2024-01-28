@@ -160,7 +160,7 @@ func _physics_process(delta:float) -> void:
 	var collision:KinematicCollision = self.move_and_collide(self.velocity)
 	if collision:
 		if self.velocity.length() >= terminalVelocity:
-			emit_signal("catsGoBoom")
+			pass #emit_signal("catsGoBoom")
 		else:
 			self.velocity = self.velocity.bounce(collision.normal)
 			
