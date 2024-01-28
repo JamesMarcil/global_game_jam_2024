@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/character_controls.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/CatHuman_Skeleton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/follow_camera.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/load_scene.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/need_moar_snacks.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.15
@@ -27,6 +28,7 @@ terminalVelocity = 0.05
 turn_speed = 2.0
 waitForGameOverInSeconds = 5.0
 gameOverScene = "res://Scenes/game_over.tscn"
+pathToSnacksOverlay = NodePath("../Control")
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 transform = Transform( 1.00528, 0, 0, 0, -4.39422e-08, 1.00528, 0, -1.00528, -4.39422e-08, 0, 0.65, 0 )
@@ -55,5 +57,7 @@ max_distance = 1.0
 [node name="LoadSceneOnCatsGoBoom" type="Node" parent="KinematicBody"]
 script = ExtResource( 4 )
 sceneToLoad = "res://Scenes/game_over.tscn"
+
+[node name="Control" parent="." instance=ExtResource( 5 )]
 
 [connection signal="catsGoBoom" from="KinematicBody" to="KinematicBody/LoadSceneOnCatsGoBoom" method="loadExportedScene"]

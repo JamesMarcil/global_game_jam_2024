@@ -10,6 +10,7 @@ export(float) var terminalVelocity:float
 export(float) var turn_speed:float
 export(float) var waitForGameOverInSeconds:float
 export(String, FILE) var gameOverScene:String
+export(NodePath) var pathToSnacksOverlay
 
 signal catsGoBoom()
 signal catGoesFlying()
@@ -36,6 +37,7 @@ var list_of_cats:Array
 var num_cats_at_start:int
 var rng:RandomNumberGenerator
 var num_snacks_at_start:int
+var need_snacks_overlay:NeedSnacksOverlay
 var SnacksHeldL = 0
 var SnacksHeldR = 0
 var SnacksHeld = []
@@ -50,9 +52,9 @@ func _ready():
 	self.list_of_cats = get_tree().get_nodes_in_group("Cats")
 	self.num_cats_at_start = self.list_of_cats.size()
 	
-	self.num_snacks_at_start = get_tree().get_nodes_in_group("Snacks").size()
-	
 	self.fisher_yates_shuffle(self.list_of_cats)
+	
+	self.need_snacks_overlay = self.get_node(self.pathToSnacksOverlay)
 	
 	self.move_lock_y = true # No floating cats!!
 
@@ -73,6 +75,11 @@ func has_lost_too_many_cats() -> bool:
 func acquire_snack() -> void:
 	self.num_snacks_acquired += 1
 	
+	if has_all_snacks():
+		self.need_snacks_overlay.no_moar_snacks()
+	else:
+		self.need_snacks_overlay.we_need_snacks()
+	
 func has_all_snacks() -> bool:
 	return self.num_snacks_acquired >= self.num_snacks_at_start
 	
@@ -80,6 +87,9 @@ func load_game_over_on_timeout() -> void:
 	get_tree().change_scene(gameOverScene)
 
 func _physics_process(delta:float) -> void:
+	if self.num_snacks_at_start <= 0:
+		self.num_snacks_at_start = get_tree().get_nodes_in_group("Snacks").size()
+	
 	var movement_direction:Vector3 = Vector3()
 	
 	if !has_lost_too_many_cats():
