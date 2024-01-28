@@ -18,7 +18,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 needMoarSnacks = "NEED MOAR SNACKS"
-noMoarSnacks = "GET OUT!!"
+noMoarSnacks = "GET OUT THE DOOR!!"
 pathToLabel = NodePath("Label")
 displayDuration = 3.0
 blinkFrequency = 0.5
