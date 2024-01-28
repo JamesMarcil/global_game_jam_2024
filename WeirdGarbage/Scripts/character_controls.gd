@@ -7,6 +7,7 @@ export(float) var tilt_deceleration:float
 export(float) var max_velocity:float
 export(float) var friction:float
 export(float) var terminalVelocity:float
+export(float) var turn_speed:float
 
 export(NodePath) var cameraNode:NodePath
 
@@ -52,8 +53,7 @@ func _physics_process(delta:float) -> void:
 #	var camera_basis:Basis = camera.global_transform.basis
 #	var adjusted_basis:Basis = camera_basis.rotated(camera_basis.x, -camera_basis.get_euler().x)
 #	movement_direction = adjusted_basis.xform(movement_direction)
-	
-	movement_direction = movement_direction.normalized()
+#	movement_direction = movement_direction.normalized()
 	
 	var target_velocity:Vector3 = movement_direction * max_velocity
 	
@@ -116,6 +116,7 @@ func _physics_process(delta:float) -> void:
 		else:
 			self.velocity = self.velocity.bounce(collision.normal)
 	
+	self.transform = self.transform.interpolate_with(self.transform.looking_at(self.transform.origin + movement_direction.normalized(), Vector3.UP), turn_speed * delta)
 	
 	#ANIMATION STUFF !!!!!!!!!!!!
 	var Velocity_Average = min((abs(velocity.x)+abs(velocity.y)+abs(velocity.z))/3.0,max_velocity)/max_velocity

@@ -14,7 +14,7 @@ size = Vector3( 1, 1, 1 )
 [node name="Spatial" type="Spatial"]
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 1 )
@@ -23,6 +23,7 @@ tilt_deceleration = 0.5
 max_velocity = 0.5
 friction = 0.01
 terminalVelocity = 0.05
+turn_speed = 2.0
 cameraNode = NodePath("Camera Target/Camera")
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
