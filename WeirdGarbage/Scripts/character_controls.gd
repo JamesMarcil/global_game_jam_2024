@@ -8,6 +8,8 @@ export(float) var max_velocity:float
 export(float) var friction:float
 export(float) var terminalVelocity:float
 export(float) var turn_speed:float
+export(float) var waitForGameOverInSeconds:float
+export(String, FILE) var gameOverScene:String
 
 signal catsGoBoom()
 signal catGoesFlying()
@@ -56,7 +58,7 @@ func fisher_yates_shuffle(arr:Array)->void:
 		arr[j] = temp
 
 func has_lost_too_many_cats() -> bool:
-	return false
+	return self.list_of_cats.size() <= 0
 
 func acquire_snack() -> void:
 	self.num_snacks_acquired += 1
@@ -64,19 +66,23 @@ func acquire_snack() -> void:
 func has_all_snacks() -> bool:
 	# TODO: Get all snacks in group
 	return true
+	
+func load_game_over_on_timeout() -> void:
+	get_tree().change_scene(gameOverScene)
 
 func _physics_process(delta:float) -> void:
 	var movement_direction:Vector3 = Vector3()
 	
-	if Input.is_action_pressed("lean_forward"):
-		movement_direction = Vector3.FORWARD
-	elif Input.is_action_pressed("lean_backward"):
-		movement_direction = Vector3.BACK
-		
-	if Input.is_action_pressed("lean_right"):
-		movement_direction = Vector3.RIGHT
-	elif Input.is_action_pressed("lean_left"):
-		movement_direction = Vector3.LEFT
+	if !has_lost_too_many_cats():
+		if Input.is_action_pressed("lean_forward"):
+			movement_direction = Vector3.FORWARD
+		elif Input.is_action_pressed("lean_backward"):
+			movement_direction = Vector3.BACK
+			
+		if Input.is_action_pressed("lean_right"):
+			movement_direction = Vector3.RIGHT
+		elif Input.is_action_pressed("lean_left"):
+			movement_direction = Vector3.LEFT
 	
 	var target_velocity:Vector3 = movement_direction * max_velocity
 	
@@ -143,6 +149,15 @@ func _physics_process(delta:float) -> void:
 				var catToBlastOff = self.list_of_cats.pop_front()
 				var catScript = catToBlastOff.get_child(0) as Cat
 				catScript.BlastOff()
+
+				if has_lost_too_many_cats():
+					var timer = Timer.new()
+					timer.wait_time = waitForGameOverInSeconds
+					timer.one_shot = true
+					timer.autostart = true
+					timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
+					timer.connect("timeout", self, "load_game_over_on_timeout")
+					self.add_child(timer)
 			
 			emit_signal("catGoesFlying")
 	
