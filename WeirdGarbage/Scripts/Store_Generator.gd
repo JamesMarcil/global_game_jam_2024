@@ -25,9 +25,9 @@ var Chunk_Directory = {
 
 onready var Chunk_Holder = get_node("LayoutHolder")
 
-const Store_Size_Min = 3#DO NOT CHANGE THIS should be 3 always
-var Store_Size_X_Max = 5#Max horizontal size of the Store
-var Store_Size_Z_Max = 5#Max depth size of the Store
+const Store_Size_Min = 4#DO NOT CHANGE THIS should be 3 always
+var Store_Size_X_Max = 6#Max horizontal size of the Store
+var Store_Size_Z_Max = 6#Max depth size of the Store
 var Store_Size_X = 0
 var Store_Size_Z = 0
 var SecurityCameraPos = Vector3(0,0,0)
