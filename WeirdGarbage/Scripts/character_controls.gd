@@ -49,9 +49,9 @@ func _physics_process(delta:float) -> void:
 	elif Input.is_action_pressed("lean_left"):
 		movement_direction = Vector3.LEFT
 	
-	var camera_basis:Basis = camera.global_transform.basis
-	var adjusted_basis:Basis = camera_basis.rotated(camera_basis.x, -camera_basis.get_euler().x)
-	movement_direction = adjusted_basis.xform(movement_direction)
+#	var camera_basis:Basis = camera.global_transform.basis
+#	var adjusted_basis:Basis = camera_basis.rotated(camera_basis.x, -camera_basis.get_euler().x)
+#	movement_direction = adjusted_basis.xform(movement_direction)
 	
 	movement_direction = movement_direction.normalized()
 	
