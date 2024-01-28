@@ -116,7 +116,8 @@ func _physics_process(delta:float) -> void:
 		else:
 			self.velocity = self.velocity.bounce(collision.normal)
 	
-	self.transform = self.transform.interpolate_with(self.transform.looking_at(self.transform.origin + movement_direction.normalized(), Vector3.UP), turn_speed * delta)
+	if movement_direction.length() > 0:
+		self.transform = self.transform.interpolate_with(self.transform.looking_at(self.transform.origin + movement_direction.normalized(), Vector3.UP), turn_speed * delta)
 	
 	#ANIMATION STUFF !!!!!!!!!!!!
 	var Velocity_Average = min((abs(velocity.x)+abs(velocity.y)+abs(velocity.z))/3.0,max_velocity)/max_velocity
