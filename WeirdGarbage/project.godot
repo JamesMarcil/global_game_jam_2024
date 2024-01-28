@@ -78,6 +78,10 @@ config/name="WeirdGarbage"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/fullscreen=true
+
 [input]
 
 lean_forward={
