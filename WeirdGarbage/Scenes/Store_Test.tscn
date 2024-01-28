@@ -71,6 +71,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 
 [node name="CatHuman" parent="." instance=ExtResource( 11 )]
 
+[node name="KinematicBody" parent="CatHuman" index="0"]
+cameraNode = NodePath("../../SecurityCamera/Camera")
+
 [node name="Lights" type="Spatial" parent="."]
 
 [node name="SecurityCamera" type="Spatial" parent="."]
