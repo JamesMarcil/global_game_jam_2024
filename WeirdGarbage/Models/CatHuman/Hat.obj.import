@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Hat.obj-b5a820c55f561747c22603bbd631ba62.mesh"
+
+[deps]
+
+files=[ "res://.import/Hat.obj-b5a820c55f561747c22603bbd631ba62.mesh" ]
+
+source_file="res://Models/CatHuman/Hat.obj"
+dest_files=[ "res://.import/Hat.obj-b5a820c55f561747c22603bbd631ba62.mesh", "res://.import/Hat.obj-b5a820c55f561747c22603bbd631ba62.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

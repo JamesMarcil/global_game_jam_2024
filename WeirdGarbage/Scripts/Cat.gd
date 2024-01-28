@@ -1,17 +1,32 @@
 extends RigidBody
 
 
-onready var BlastAwayPoint = get_node("../../../Spine2")
+onready var BlastAwayPoint = get_node("../../../../../")#get_node("../../../Spine2")
 onready var BlastAwayParent = get_node("../../../../../../../../CatHolder")
 onready var CatBod_00 = get_node("Cat_00")
+onready var CatBod_01 = get_node("Cat_01")
 
 onready var CatBodies = {
 	0:CatBod_00,
-	1:CatBod_00,
+	1:CatBod_01,
 	2:CatBod_00,
-	3:CatBod_00,
-	4:CatBod_00
+	3:CatBod_01
 }
+
+onready var CatColors = {
+	0:[Color(0.117647, 0.117647, 0.117647),Color(0.117647, 0.117647, 0.117647)],#Black
+	1:[Color(0.894531, 0.882984, 0.863083),Color(0.894531, 0.882984, 0.863083)],#White
+	2:[Color(0.765625, 0.57784, 0.254211),Color(0.765625, 0.57784, 0.254211)],#Oragne
+	3:[Color(0.394531, 0.339749, 0.254288),Color(0.394531, 0.339749, 0.254288)],#Brown
+	4:[Color(0.300781, 0.291676, 0.281982),Color(0.300781, 0.291676, 0.281982)],#Grey
+	5:[Color(0.117647, 0.117647, 0.117647),Color(0.894531, 0.882984, 0.863083)],#Black Tux
+	6:[Color(0.765625, 0.57784, 0.254211),Color(0.894531, 0.882984, 0.863083)],#Oragne Tux
+	7:[Color(0.394531, 0.339749, 0.254288),Color(0.894531, 0.882984, 0.863083)],#Brown Tux
+	8:[Color(0.300781, 0.291676, 0.281982),Color(0.894531, 0.882984, 0.863083)],#Brown Tux
+	9:[Color(0.300781, 0.291676, 0.281982),Color(0.894531, 0.882984, 0.863083)],#Grey Tux
+}
+
+export var IsHat = false
 
 var Blasted = 0
 const Hit_Force_Range = [2.0,8.0]
@@ -48,7 +63,14 @@ func BlastOff():
 
 
 func _ready():
-	CatBodies[RandomNum("int",0,len(CatBodies)-1)].visible = true
+	if IsHat == false:
+		var CatBody = CatBodies[RandomNum("int",0,len(CatBodies)-1)]
+		CatBody.visible = true#pick a cat mesh to show
+		var NewMat = CatBody.get_surface_material(0).duplicate()
+		var BodyColor = CatColors[RandomNum("int",0,len(CatColors)-1)]
+		NewMat.set_shader_param("ColorBody",BodyColor[0])
+		NewMat.set_shader_param("ColorBody2",BodyColor[1])
+		CatBody.set_surface_material(0,NewMat)
 
 
 func _process(_delta):
