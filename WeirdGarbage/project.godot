@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody",
+"class": "Cat",
+"language": "GDScript",
+"path": "res://Scripts/Cat.gd"
+}, {
 "base": "Area",
 "class": "CatSnacks",
 "language": "GDScript",
@@ -55,6 +60,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/victory_area.gd"
 } ]
 _global_script_class_icons={
+"Cat": "",
 "CatSnacks": "",
 "CharacterController": "",
 "EnableRagdoll": "",

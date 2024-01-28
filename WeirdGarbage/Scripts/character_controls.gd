@@ -8,12 +8,13 @@ export(float) var max_velocity:float
 export(float) var friction:float
 export(float) var terminalVelocity:float
 export(float) var turn_speed:float
+export(float) var waitForGameOverInSeconds:float
+export(String, FILE) var gameOverScene:String
 
 signal catsGoBoom()
 signal catGoesFlying()
 
 onready var CatHuman_AnimTree = self.get_node("CatHuman_Skeleton/AnimationTree")
-
 
 static func vector3_max(a:Vector3, b:Vector3) -> Vector3:
 	var result:Vector3 = Vector3()
@@ -31,31 +32,57 @@ static func vector3_min(a:Vector3, b:Vector3) -> Vector3:
 	
 var velocity:Vector3
 var num_snacks_acquired:int
+var list_of_cats:Array
+var num_cats_at_start:int
+var rng:RandomNumberGenerator
 	
 func _ready():
 	self.velocity = Vector3.ZERO
 	self.num_snacks_acquired = 0
+	
+	self.rng = RandomNumberGenerator.new()
+	self.rng.randomize()
+	
+	self.list_of_cats = get_tree().get_nodes_in_group("Cats")
+	self.num_cats_at_start = self.list_of_cats.size()
+	
+	self.fisher_yates_shuffle(self.list_of_cats)
+	
 	self.move_lock_y = true # No floating cats!!
 	
+func fisher_yates_shuffle(arr:Array)->void:
+	for i in range(arr.size() -1, 0, -1):
+		var j:int = rng.randi_range(0, i)
+		var temp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
+
+func has_lost_too_many_cats() -> bool:
+	return self.list_of_cats.size() <= 0
+
 func acquire_snack() -> void:
 	self.num_snacks_acquired += 1
 	
 func has_all_snacks() -> bool:
 	# TODO: Get all snacks in group
 	return true
+	
+func load_game_over_on_timeout() -> void:
+	get_tree().change_scene(gameOverScene)
 
 func _physics_process(delta:float) -> void:
 	var movement_direction:Vector3 = Vector3()
 	
-	if Input.is_action_pressed("lean_forward"):
-		movement_direction = Vector3.FORWARD
-	elif Input.is_action_pressed("lean_backward"):
-		movement_direction = Vector3.BACK
-		
-	if Input.is_action_pressed("lean_right"):
-		movement_direction = Vector3.RIGHT
-	elif Input.is_action_pressed("lean_left"):
-		movement_direction = Vector3.LEFT
+	if !has_lost_too_many_cats():
+		if Input.is_action_pressed("lean_forward"):
+			movement_direction = Vector3.FORWARD
+		elif Input.is_action_pressed("lean_backward"):
+			movement_direction = Vector3.BACK
+			
+		if Input.is_action_pressed("lean_right"):
+			movement_direction = Vector3.RIGHT
+		elif Input.is_action_pressed("lean_left"):
+			movement_direction = Vector3.LEFT
 	
 	var target_velocity:Vector3 = movement_direction * max_velocity
 	
@@ -117,6 +144,20 @@ func _physics_process(delta:float) -> void:
 			emit_signal("catsGoBoom")
 		else:
 			self.velocity = self.velocity.bounce(collision.normal)
+			
+			if self.list_of_cats.size() > 0:
+				var catToBlastOff = self.list_of_cats.pop_front()
+				var catScript = catToBlastOff.get_child(0) as Cat
+				catScript.BlastOff()
+
+				if has_lost_too_many_cats():
+					var timer = Timer.new()
+					timer.wait_time = waitForGameOverInSeconds
+					timer.one_shot = true
+					timer.autostart = true
+					timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
+					timer.connect("timeout", self, "load_game_over_on_timeout")
+					self.add_child(timer)
 			
 			emit_signal("catGoesFlying")
 	

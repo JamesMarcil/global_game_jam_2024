@@ -1,4 +1,4 @@
-extends RigidBody
+class_name Cat extends RigidBody
 
 
 onready var BlastAwayPoint = get_node("../../../../../")#get_node("../../../Spine2")
