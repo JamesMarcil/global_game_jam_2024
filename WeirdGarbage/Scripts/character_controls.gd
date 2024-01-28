@@ -29,10 +29,19 @@ static func vector3_min(a:Vector3, b:Vector3) -> Vector3:
 	return result
 	
 var velocity:Vector3
+var num_snacks_acquired:int
 	
 func _ready():
 	self.velocity = Vector3.ZERO
+	self.num_snacks_acquired = 0
 	self.move_lock_y = true # No floating cats!!
+	
+func acquire_snack() -> void:
+	self.num_snacks_acquired += 1
+	
+func has_all_snacks() -> bool:
+	# TODO: Get all snacks in group
+	return true
 
 func _physics_process(delta:float) -> void:
 	var movement_direction:Vector3 = Vector3()
